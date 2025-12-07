@@ -15,7 +15,7 @@
  *
  *
  * @author Matthew Kiyono
- * @version 1.3
+ * @version 1.4
  * @since 10/20/2025
  ****************************************************************************************/
 
@@ -41,6 +41,11 @@ public class Nurse extends Person {
     @NotNull
     @Column(name = "address", nullable = false)
     private String address;
+
+    // --- REQUIRED BY JPA (no-arg constructor) ---
+    protected Nurse() {
+        // for JPA only
+    }
 
     //Constructor
     public Nurse(int id, String firstName, String lastName, String phone, String email, String address) {

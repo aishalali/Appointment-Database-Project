@@ -1,0 +1,38 @@
+/********************************************************************************************
+ *     ProviderRepository
+ *      The repository interface involving Provider.
+ *
+ *      The imports of Repository and JpaRepository automatically provide the following prompts:
+ *      - findAll() - Select * query
+ *      - findById(Integer id) - select by primary key
+ *      - save(Insurance entity) - insert and update
+ *      - deleteById(Integer id) - remove
+ *
+ *      For simplistic queries, like findBy<variableTypeHere> only need their method headers,
+ *      while more advance prompts require a different structure:
+ *
+ *      (Custom Query Format):
+ *
+ *      (@)Query       //(without the parenthesis around the @ sign)
+ *      (""" ... """)  //(triple quotes ensures queries are clean and multi-lined)
+ *
+ *      List<Entity> findBy<...>(@Param("<databaseFieldName>") <modelFieldVarType> <modelFieldName>);
+ *
+ * @author Matthew Kiyono
+ * @version 1.0
+ * @since 12/6/2025
+ *
+ ********************************************************************************************/
+package com.appointmentProject.backend.repository;
+
+import com.appointmentProject.backend.model.Provider;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProviderRepository extends JpaRepository<Provider, Integer> {
+
+    // Later we can add:
+    // Optional<Provider> findByEmail(String email);
+    // Optional<Provider> findByFirstNameAndLastName(String firstName, String lastName);
+}
