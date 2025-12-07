@@ -23,6 +23,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
 
 
 public class LoginController {
@@ -62,6 +63,8 @@ public class LoginController {
             in.close();
 
             System.out.println("[LOGIN] Backend response: " + response);
+            System.out.println("[LOGIN RAW BYTES] " + Arrays.toString(response.getBytes()));
+
 
             SessionData.currentUsername = username;
 

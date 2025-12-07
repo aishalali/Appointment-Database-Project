@@ -11,7 +11,7 @@
       spacing="20">
 
     <!-- 🔹 TOP BAR (Manage Account Button) -->
-    <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-padding: 0 10 0 10;" prefWidth="9999">
+    <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-padding: 0 10 0 10;" >
         <Button text="Manage Account"
                 onAction="#handleManageAccount"
                 style="-fx-font-size: 14px; -fx-padding: 0 10 0 10;" />
@@ -21,7 +21,10 @@
     <Label text="Admin Dashboard"
            style="-fx-font-size: 24px; -fx-font-weight: bold;" />
 
-    <Label text="(Placeholder — build features soon)" />
+    <Button text="Manage Users"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;"
+            onAction="#handleManageUsers"/>
+
 
     <Button text="Log Out"
             onAction="#handleLogout" />

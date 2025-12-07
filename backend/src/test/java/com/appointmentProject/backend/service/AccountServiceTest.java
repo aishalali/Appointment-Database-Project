@@ -2,7 +2,7 @@ package com.appointmentProject.backend.service;
 
 import com.appointmentProject.backend.exception.RecordNotFoundException;
 import com.appointmentProject.backend.model.Account;
-import com.appointmentProject.backend.model.Account.authorization;
+import com.appointmentProject.backend.model.Account.Authorization;
 import com.appointmentProject.backend.repository.AccountRepository;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -45,8 +45,8 @@ public class AccountServiceTest {
 
     @BeforeEach
     void init() {
-        sampleAdmin = new Account("adminUser", "pw", "admin@mail.com", authorization.ADMIN);
-        sampleNurse = new Account("nurseUser", "pw", "nurse@mail.com", authorization.NURSE);
+        sampleAdmin = new Account("adminUser", "pw", "admin@mail.com", Authorization.ADMIN);
+        sampleNurse = new Account("nurseUser", "pw", "nurse@mail.com", Authorization.NURSE);
     }
 
     // 1. INSERT
@@ -64,7 +64,7 @@ public class AccountServiceTest {
     // 2. UPDATE – happy path
     @Test
     void testUpdateAccount_Success() {
-        Account updated = new Account("adminUser", "newPw", "newAdmin@mail.com", authorization.ADMIN);
+        Account updated = new Account("adminUser", "newPw", "newAdmin@mail.com", Authorization.ADMIN);
 
         when(accRepo.findById("adminUser")).thenReturn(Optional.of(sampleAdmin));
         when(accRepo.save(any(Account.class))).thenReturn(updated);
@@ -80,7 +80,7 @@ public class AccountServiceTest {
     // 3. UPDATE – not found
     @Test
     void testUpdateAccount_NotFound() {
-        Account updated = new Account("missingUser", "pw", "x@mail.com", authorization.ADMIN);
+        Account updated = new Account("missingUser", "pw", "x@mail.com", Authorization.ADMIN);
 
         when(accRepo.findById("missingUser")).thenReturn(Optional.empty());
 

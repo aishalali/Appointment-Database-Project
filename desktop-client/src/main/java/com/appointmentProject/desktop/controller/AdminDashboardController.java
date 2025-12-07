@@ -33,6 +33,12 @@ public class AdminDashboardController {
     }
 
     @FXML
+    public void handleManageUsers() {
+        SceneNavigator.switchTo("/fxml/manage_users.fxml");
+    }
+
+
+    @FXML
     private void handleLogout() {
         SceneNavigator.switchTo("/fxml/login.fxml");
     }

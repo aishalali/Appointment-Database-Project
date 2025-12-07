@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.ManageUsersController"
+      alignment="TOP_CENTER"
+      spacing="20"
+      style="-fx-padding: 20;">
+
+    <HBox spacing="15" alignment="CENTER" style="-fx-padding: 10;">
+        <Button text="Create User"
+                style="-fx-font-size: 16px; -fx-padding: 8 16;"
+                onAction="#handleCreateUser"/>
+
+        <Button text="Edit User"
+                onAction="#handleEditUser"
+                style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+    </HBox>
+
+    <Label fx:id="messageLabel"
+           textFill="red"
+           style="-fx-font-size:14px;"
+           text=""/>
+
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Button text="Back"
+                onAction="#handleBack" />
+        <Label text="Manage Users"
+               style="-fx-font-size:24px; -fx-font-weight:bold;"/>
+    </HBox>
+
+    <TableView fx:id="usersTable" prefWidth="600" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="usernameCol" text="Username" prefWidth="150"/>
+            <TableColumn fx:id="emailCol" text="Email" prefWidth="200"/>
+            <TableColumn fx:id="roleCol" text="Role" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+</VBox>

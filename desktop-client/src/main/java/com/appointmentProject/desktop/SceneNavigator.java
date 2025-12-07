@@ -40,10 +40,6 @@ public class SceneNavigator {
                 mainStage.setHeight(400);
                 mainStage.centerOnScreen();
 
-            } else {
-                // All dashboards → always fullscreen
-                mainStage.setFullScreenExitHint("");
-                mainStage.setFullScreen(true);
             }
 
             mainStage.show();

@@ -13,7 +13,7 @@
 package com.appointmentProject.backend.repository;
 
 import com.appointmentProject.backend.model.Account;
-import com.appointmentProject.backend.model.Account.authorization;
+import com.appointmentProject.backend.model.Account.Authorization;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class AccountRepositoryTest {
         testAccount.setUsername("john123");
         testAccount.setPassword("password");
         testAccount.setEmail("john@example.com");
-        testAccount.setUserType(authorization.ADMIN);
+        testAccount.setUserType(Authorization.ADMIN);
 
         accountRepository.save(testAccount);
     }
@@ -66,7 +66,7 @@ public class AccountRepositoryTest {
     void testFindByUsernameAndPassword() {
         Account found = accountRepository.findByUsernameAndPassword("john123", "password");
         assertNotNull(found);
-        assertEquals(authorization.ADMIN, found.getUserType());
+        assertEquals(Authorization.ADMIN, found.getUserType());
     }
 
     @Test

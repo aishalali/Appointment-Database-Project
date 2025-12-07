@@ -1,3 +1,4 @@
+com\appointmentProject\backend\model\Account$Authorization.class
 com\appointmentProject\backend\model\EmergencyContact$Builder.class
 com\appointmentProject\backend\model\Medication.class
 com\appointmentProject\backend\controller\AccountController.class
@@ -21,7 +22,6 @@ com\appointmentProject\backend\controller\AuthController.class
 com\appointmentProject\backend\model\Availability.class
 com\appointmentProject\backend\Application.class
 com\appointmentProject\backend\controller\InsuranceController.class
-com\appointmentProject\backend\model\Account$authorization.class
 com\appointmentProject\backend\model\LabOrder.class
 com\appointmentProject\backend\dto\UserDTO.class
 com\appointmentProject\backend\util\EmailFormatter.class

@@ -10,7 +10,7 @@
 package com.appointmentProject.backend.controller;
 
 import com.appointmentProject.backend.model.Account;
-import com.appointmentProject.backend.model.Account.authorization;
+import com.appointmentProject.backend.model.Account.Authorization;
 import com.appointmentProject.backend.service.AccountService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -50,7 +50,7 @@ public class AccountControllerUnitTest {
         sampleAccount.setUsername("matthew");
         sampleAccount.setPassword("pass123");
         sampleAccount.setEmail("matthew@test.com");
-        sampleAccount.setUserType(authorization.ADMIN);
+        sampleAccount.setUserType(Authorization.ADMIN);
     }
 
     @Test

@@ -48,7 +48,7 @@ public class AccountController {
 
     // 3. Get By Username
     @GetMapping("/{username}")
-    public ResponseEntity<Account> getByUsername(@PathVariable String username) {
+    public ResponseEntity<Account> getByUsername(@PathVariable("username") String username) {
         return accService.getByUsername(username)
                 .map(ResponseEntity::ok)
                 .orElseThrow(() ->
@@ -67,10 +67,29 @@ public class AccountController {
 
     // 5. Delete Account
     @DeleteMapping("/delete/{username}")
-    public ResponseEntity<String> deleteAccount(@PathVariable String username) {
-        accService.deleteAccountByUsername(username);
-        return ResponseEntity.ok("Account removed successfully.");
+    public ResponseEntity<String> deleteAccount(@PathVariable("username") String username) {
+
+        try {
+            if (username.equals("admin")) {
+                return ResponseEntity.status(403).body("ADMIN_CANNOT_BE_DELETED");
+            }
+
+            boolean deleted = accService.safeDeleteUser(username);
+
+            if (deleted) {
+                return ResponseEntity.ok("DELETED");
+            } else {
+                return ResponseEntity.status(404).body("NOT_FOUND");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("ERROR");
+        }
     }
+
+
+
 
     // 6. Check Email
     @GetMapping("/check-email")
@@ -96,6 +115,18 @@ public class AccountController {
     ) {
         return accService.updatePassword(username, oldPassword, newPassword);
     }
+
+// 4b. Update user email + role (Admin Manage Users screen)
+    @PutMapping({"/admin-update", "/adminUpdateUser"})   // <-- supports BOTH URLs
+    public String adminUpdateUser(
+            @RequestParam("username") String username,
+            @RequestParam("email") String newEmail,
+            @RequestParam("role") String newRole
+    ) {
+        return accService.updateUserFields(username, newEmail, newRole);
+    }
+
+
 
 
 

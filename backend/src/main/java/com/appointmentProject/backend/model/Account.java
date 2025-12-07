@@ -26,7 +26,11 @@
 
 package com.appointmentProject.backend.model;
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.NotNull;
+
+import org.hibernate.annotations.DynamicUpdate;
+
+import jakarta.persistence.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
@@ -34,64 +38,98 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicUpdate
 public class Account {
 
-    //User Types
-    public enum authorization{
+    // --------------------------------------------------------
+    // ENUM (Renamed Properly)
+    // --------------------------------------------------------
+    public enum Authorization {
         ADMIN,
         PROVIDER,
         NURSE,
         RECEPTIONIST
     }
 
-    //Variables
-        @Id
-        @NotNull()
-        @Column(name = "username", unique = true, nullable = false)
-        private String username;
+    // --------------------------------------------------------
+    // FIELDS
+    // --------------------------------------------------------
 
-        @NotNull
-        @Column(name = "password", nullable = false)
-        private String password;
+    @Id
+    @Column(name = "username", unique = true, nullable = false)
+    private String username;
 
-        @NotNull
-        @Column(name = "email", nullable = false, unique = true)
-        private String email;
+    @Column(name = "password", nullable = false)
+    private String password;
 
-        @NotNull
-        @Enumerated(EnumType.STRING)
-        @Column(name = "user_type", nullable = false)
-        private authorization userType;
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
-    //Test constructor only!
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_type", nullable = false)
+    private Authorization userType;
+
+    // --------------------------------------------------------
+    // CONSTRUCTORS
+    // --------------------------------------------------------
+
     public Account() {}
 
-    //Constructor
-    public Account(String username, String password, String email, authorization userType){
+    public Account(String username, String password, String email, Authorization userType) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.userType = userType;
     }
 
-    //getters
-    public String getUsername() {return username;}
-    public String getPassword() {return password;}
-    public String getEmail() {return email;}
-    public authorization getUserType() {return userType;}
+    // --------------------------------------------------------
+    // GETTERS
+    // --------------------------------------------------------
 
-    //setters
-    public void setUsername(String username) {this.username = username;}
-    public void setPassword(String password) {this.password = password;}
-    public void setEmail(String email) {this.email = email;}
-    public void setUserType(authorization userType) {this.userType = userType;}
+    public String getUsername() {
+        return username;
+    }
 
-    //toString
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Authorization getUserType() {
+        return userType;
+    }
+
+    // --------------------------------------------------------
+    // SETTERS
+    // --------------------------------------------------------
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setUserType(Authorization userType) {
+        this.userType = userType;
+    }
+
+    // --------------------------------------------------------
+    // TO STRING
+    // --------------------------------------------------------
+
     @Override
     public String toString() {
-        return "User Account: " +
-                "\nUsername: " + this.username +
-                "\nPassword: " + this.password +
-                "\nEmail: " + this.email +
-                "\nUserType: " + this.userType +
+        return "User Account:" +
+                "\nUsername: " + username +
+                "\nPassword: " + password +
+                "\nEmail: " + email +
+                "\nUserType: " + userType +
                 "\n";
     }
 }

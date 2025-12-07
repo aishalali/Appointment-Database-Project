@@ -1,7 +1,7 @@
 package com.appointmentProject.backend.controller;
 
 import com.appointmentProject.backend.model.Account;
-import com.appointmentProject.backend.model.Account.authorization;
+import com.appointmentProject.backend.model.Account.Authorization;
 import com.appointmentProject.backend.repository.AccountRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ public class AuthControllerUnitTest {
         admin.setUsername("admin");
         admin.setPassword("adminpass");
         admin.setEmail("admin@test.com");
-        admin.setUserType(authorization.ADMIN);
+        admin.setUserType(Authorization.ADMIN);
         accountRepository.save(admin);
     }
 

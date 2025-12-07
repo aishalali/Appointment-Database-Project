@@ -57,10 +57,25 @@ public class AccountService {
         return accRepo.findByUsername(username);
     }
 
-    // LOGIN LOOKUP
+
+    // LOGIN LOOKUP (new version: look up by username, then compare password in Java)
     public Account findByUsernameAndPassword(String username, String password) {
-        return accRepo.findByUsernameAndPassword(username, password);
+        Optional<Account> opt = accRepo.findByUsername(username);
+
+        if (opt.isEmpty()) {
+            return null; // no such user
+        }
+
+        Account acc = opt.get();
+
+        // Plain-text comparison (matches how passwords are stored right now)
+        if (!acc.getPassword().equals(password)) {
+            return null; // wrong password
+        }
+
+        return acc;
     }
+
 
     //Checks if Email exists
     public boolean emailExists(String email) {
@@ -127,6 +142,35 @@ public class AccountService {
         accRepo.save(acc);
         return true;
     }
+
+    // ADMIN: Update user email + role
+    public String updateUserFields(String username, String newEmail, String newRole) {
+        Optional<Account> opt = accRepo.findByUsername(username);
+        if (opt.isEmpty()) {
+            return "USER_NOT_FOUND";
+        }
+
+        Account acc = opt.get();
+
+        acc.setEmail(newEmail);
+        acc.setUserType(Account.Authorization.valueOf(newRole));
+
+        accRepo.save(acc);
+        return "SUCCESS";
+    }
+    public boolean safeDeleteUser(String username) {
+
+        Optional<Account> existing = accRepo.findByUsername(username);
+
+        if (existing.isEmpty()) {
+            return false;   // User does not exist
+        }
+
+        accRepo.delete(existing.get());
+        return true;
+    }
+
+
 
 
 

@@ -2,7 +2,7 @@ package com.appointmentProject.backend.model;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import com.appointmentProject.backend.model.Account;
-import com.appointmentProject.backend.model.Account.authorization;
+import com.appointmentProject.backend.model.Account.Authorization;
 
 
 public class AccountTest {
@@ -24,7 +24,7 @@ public class AccountTest {
         String name1 = "workerholic2", name2 = "channelIV9";
         String pass1 = "password", pass2 = "admin";
         String email1 = "zelda@uwm.edu", email2 = "pikachu@gmail.com";
-        authorization aut1 = Account.authorization.NURSE, aut2 = Account.authorization.PROVIDER;
+        Authorization aut1 = Account.Authorization.NURSE, aut2 = Account.Authorization.PROVIDER;
 
         Account acc = new Account(name1, pass1, email1, aut1);
 
@@ -55,7 +55,7 @@ public class AccountTest {
     void testToString() {
         //Test Object
         Account acc = new Account("mudkip123", "secret",
-                "mk@nintendo.com", Account.authorization.ADMIN);
+                "mk@nintendo.com", Account.Authorization.ADMIN);
 
         String expected =
                 "User Account: " +

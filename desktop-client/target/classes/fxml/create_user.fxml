@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.CreateUserController"
+      alignment="CENTER"
+      spacing="12"
+      style="-fx-padding: 20;">
+
+    <Label text="Create New User" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+
+    <TextField fx:id="usernameField" promptText="Username" />
+    <PasswordField fx:id="passwordField" promptText="Password" />
+    <TextField fx:id="emailField" promptText="Email" />
+
+    <ComboBox fx:id="roleBox" promptText="Select Role" />
+
+    <Button text="Create User"
+            style="-fx-font-size: 16px; -fx-padding: 8 16;"
+            onAction="#handleCreateUser" />
+
+    <Button text="Back"
+            onAction="#handleBack" />
+
+    <Label fx:id="messageLabel" style="-fx-text-fill: red;" />
+
+</VBox>

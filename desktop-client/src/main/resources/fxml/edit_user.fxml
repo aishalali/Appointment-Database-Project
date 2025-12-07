@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.EditUserController"
+      spacing="10"
+      alignment="CENTER"
+      style="-fx-padding: 20;">
+
+    <Label text="Edit User"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+
+    <TextField fx:id="emailField" promptText="Email" prefWidth="300"/>
+    <ComboBox fx:id="roleBox" prefWidth="300"/>
+
+    <Label fx:id="messageLabel" style="-fx-text-fill: red;" />
+
+    <HBox spacing="20" alignment="CENTER">
+        <Button text="Save Changes"
+                onAction="#handleSaveUser"
+                style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+        <Button text="Delete User"
+                style="-fx-background-color: #b30000; -fx-text-fill: white; -fx-font-size: 16px;"
+                onAction="#handleDeleteUser"/>
+        <Button text="Back"
+                onAction="#handleBack"
+                style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+    </HBox>
+
+</VBox>
