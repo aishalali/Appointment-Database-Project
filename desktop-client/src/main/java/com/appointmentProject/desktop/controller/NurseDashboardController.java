@@ -13,7 +13,16 @@
  * @since 12/3/2025
  **************************************************************************/
 package com.appointmentProject.desktop.controller;
-
+/********************************************************************
+ *  NurseDashboardController.java
+ *
+ *          This controller provides a homepage for the Nurse user
+ *          type.
+ *
+ * @author Matthew Kiyono
+ * @version 1.0
+ * @since 12/3/2025
+ ********************************************************************/
 import com.appointmentProject.desktop.SceneNavigator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

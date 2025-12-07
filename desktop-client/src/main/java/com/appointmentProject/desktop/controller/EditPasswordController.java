@@ -1,3 +1,14 @@
+/********************************************************************
+ *  EditPasswordController.java
+ *
+ *          This controller provides a "form" for the user to fill
+ *          out and create a new password. It cannot be the same as
+ *          their previous one.
+ *
+ * @author Matthew Kiyono
+ * @version 1.0
+ * @since 12/6/2025
+ ********************************************************************/
 package com.appointmentProject.desktop.controller;
 
 import com.appointmentProject.desktop.SceneNavigator;

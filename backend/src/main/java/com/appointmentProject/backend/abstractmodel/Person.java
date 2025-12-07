@@ -16,7 +16,7 @@
  *      - The import for NullString is applied to display nulls as "N/A".
  *
  * @author Matthew Kiyono
- * @version 1.1
+ * @version 1.2
  * @since 10/16/2025
  ****************************************************************************************/
 
@@ -29,17 +29,18 @@ import jakarta.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class Person {
 
-    @Column(name = "firstName", nullable = false, length = 100)
+    @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;
 
-    @Column(name = "lastName", nullable = false, length = 100)
+    @Column(name = "last_name", nullable = false, length = 100)
     protected String lastName;
 
-    @Column(name = "phone", nullable = false)
+    @Column(name = "phone", nullable = false, length = 100)
     protected String phone;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, length = 255)
     protected String email;
+
 
     //Test Constructor Only!
     protected Person() {}

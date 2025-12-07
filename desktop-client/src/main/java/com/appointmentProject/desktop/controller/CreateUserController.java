@@ -1,3 +1,14 @@
+/********************************************************************
+ *  CreateUserController.java
+ *
+ *          This controller provides a "form" for the admin user to
+ *          fill out and create a new user for.
+ *
+ * @author Matthew Kiyono
+ * @version 1.0
+ * @since 12/6/2025
+ ********************************************************************/
+
 package com.appointmentProject.desktop.controller;
 
 import com.appointmentProject.desktop.SceneNavigator;

@@ -25,6 +25,10 @@
             style="-fx-font-size: 16px; -fx-padding: 8 20;"
             onAction="#handleManageUsers"/>
 
+    <Button text="Manage Staff"
+            onAction="#handleManageStaff"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+
 
     <Button text="Log Out"
             onAction="#handleLogout" />

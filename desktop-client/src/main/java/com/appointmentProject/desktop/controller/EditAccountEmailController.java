@@ -1,3 +1,14 @@
+/********************************************************************
+ *  EditAccountEmailController.java
+ *
+ *          This controller provides a "form" for the user to provide
+ *          a new email address that is not the same or already taken
+ *          by another user.
+ *
+ * @author Matthew Kiyono
+ * @version 1.0
+ * @since 12/6/2025
+ ********************************************************************/
 package com.appointmentProject.desktop.controller;
 
 import com.appointmentProject.desktop.SceneNavigator;

@@ -1,3 +1,14 @@
+/********************************************************************
+ *  AccountManagementController.java
+ *
+ *          This controller is responsible for providing the option
+ *          to change the user's password or email address.
+ *
+ * @author Matthew Kiyono
+ * @version 1.0
+ * @since 12/6/2025
+ ********************************************************************/
+
 package com.appointmentProject.desktop.controller;
 
 import com.appointmentProject.desktop.SceneNavigator;

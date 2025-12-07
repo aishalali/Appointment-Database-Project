@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.ManageStaffController"
+      alignment="TOP_CENTER"
+      spacing="20"
+      style="-fx-padding: 20;">
+
+    <Label text="Manage Staff"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <Button text="Providers"
+            onAction="#handleProviders"
+            style="-fx-font-size: 18px; -fx-padding: 10 20;" />
+
+    <Button text="Nurses"
+            onAction="#handleNurses"
+            style="-fx-font-size: 18px; -fx-padding: 10 20;" />
+
+    <Button text="Back"
+            onAction="#handleBack"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+
+</VBox>

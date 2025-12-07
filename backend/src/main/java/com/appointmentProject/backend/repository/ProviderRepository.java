@@ -29,10 +29,14 @@ import com.appointmentProject.backend.model.Provider;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface ProviderRepository extends JpaRepository<Provider, Integer> {
 
-    // Later we can add:
-    // Optional<Provider> findByEmail(String email);
-    // Optional<Provider> findByFirstNameAndLastName(String firstName, String lastName);
+    // Unique first + last name constraint
+    Optional<Provider> findByFirstNameAndLastName(String firstName, String lastName);
+
+    // Unique email constraint
+    Optional<Provider> findByEmail(String email);
 }

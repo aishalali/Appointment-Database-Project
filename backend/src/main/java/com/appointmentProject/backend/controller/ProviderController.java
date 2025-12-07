@@ -1,6 +1,3 @@
-
-
-package com.appointmentProject.backend.controller;
 /********************************************************************************************************
  * ProviderController.java
  *
@@ -8,8 +5,10 @@ package com.appointmentProject.backend.controller;
  *
  * @author Matthew Kiyono
  * @since 12/6/2025
- * @version 1.0
+ * @version 1.1
  ********************************************************************************************************/
+package com.appointmentProject.backend.controller;
+
 import com.appointmentProject.backend.model.Provider;
 import com.appointmentProject.backend.service.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,43 +22,42 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class ProviderController {
 
+
     @Autowired
     private ProviderService providerService;
 
-    // 1. Get all providers
+
+    // Get all providers
     @GetMapping("/all")
     public ResponseEntity<List<Provider>> getAllProviders() {
         return ResponseEntity.ok(providerService.getAllProviders());
     }
 
-    // 2. Get one provider by ID
+    // Get one provider
     @GetMapping("/{id}")
-    public ResponseEntity<Provider> getProviderById(@PathVariable int id) {
-        Provider provider = providerService.getById(id);
-        return ResponseEntity.ok(provider);
+    public ResponseEntity<Provider> getProvider(@PathVariable int id) {
+        return ResponseEntity.ok(providerService.getProviderById(id));
     }
 
-    // 3. Create provider
+    // Create provider
     @PostMapping("/add")
     public ResponseEntity<Provider> addProvider(@RequestBody Provider provider) {
-        Provider created = providerService.addProvider(provider);
-        return ResponseEntity.ok(created);
+        return ResponseEntity.ok(providerService.addProvider(provider));
     }
 
-    // 4. Update provider
+    // Update provider
     @PutMapping("/update/{id}")
     public ResponseEntity<Provider> updateProvider(
             @PathVariable int id,
             @RequestBody Provider provider
     ) {
-        Provider updated = providerService.updateProvider(id, provider);
-        return ResponseEntity.ok(updated);
+        return ResponseEntity.ok(providerService.updateProvider(id, provider));
     }
 
-    // 5. Delete provider
+    // Delete provider
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteProvider(@PathVariable int id) {
         providerService.deleteProvider(id);
-        return ResponseEntity.ok("Provider deleted successfully.");
+        return ResponseEntity.ok("Provider deleted.");
     }
 }

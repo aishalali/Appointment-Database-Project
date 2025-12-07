@@ -1,7 +1,9 @@
 /****************************************************************************************
  *   EditUserController.java
  *
- *      The actions/interactions the admin can edit a user's email or account type.
+ *      This controller is responsible for providing the admin user a "form" to fill out
+ *      to edit an existing user. Here, they can modify their email address or user type.
+ *      They can also delete the user as well.
  *
  * @author Matthew Kiyono
  * @since 12/6/2025

@@ -2,7 +2,8 @@
  *  LoginController.java
  *
  *          This class provides a working login screen and screen
- *          navigator.
+ *          navigator. Depending on the user type will determine
+ *          which dashboard they are sent to.
  *
  * @author Matthew Kiyono
  * @version 1.0

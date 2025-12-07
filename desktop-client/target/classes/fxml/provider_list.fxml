@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.ProviderListController"
+      alignment="TOP_CENTER"
+      spacing="20"
+      style="-fx-padding: 20;">
+
+    <!-- Top row: Create / Edit / Back -->
+    <HBox spacing="15" alignment="CENTER" style="-fx-padding: 10;">
+        <Button text="Create Provider"
+                style="-fx-font-size: 16px; -fx-padding: 8 16;"
+                onAction="#handleCreateProvider"/>
+
+        <Button text="Edit Provider"
+                style="-fx-font-size: 16px; -fx-padding: 8 20;"
+                onAction="#handleEditProvider"/>
+
+        <Button text="Back"
+                style="-fx-font-size: 16px; -fx-padding: 8 16;"
+                onAction="#handleBack"/>
+    </HBox>
+
+    <!-- Message label (errors / status) -->
+    <Label fx:id="messageLabel"
+           textFill="red"
+           style="-fx-font-size:14px;"
+           text=""/>
+
+    <!-- Title -->
+    <Label text="Providers"
+           style="-fx-font-size:24px; -fx-font-weight:bold;"/>
+
+    <!-- Table -->
+    <TableView fx:id="providersTable"
+               prefWidth="800"
+               prefHeight="400">
+        <columns>
+            <TableColumn fx:id="idCol" text="ID" prefWidth="80"/>
+            <TableColumn fx:id="firstNameCol" text="First Name" prefWidth="140"/>
+            <TableColumn fx:id="lastNameCol" text="Last Name" prefWidth="140"/>
+            <TableColumn fx:id="phoneCol" text="Phone" prefWidth="140"/>
+            <TableColumn fx:id="emailCol" text="Email" prefWidth="180"/>
+            <TableColumn fx:id="specialtyCol" text="Specialty" prefWidth="120"/>
+            <TableColumn fx:id="addressCol" text="Address" prefWidth="200"/>
+        </columns>
+    </TableView>
+
+</VBox>
