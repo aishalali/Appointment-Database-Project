@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.ProviderCreateController"
+      alignment="TOP_CENTER"
+      spacing="15"
+      style="-fx-padding: 20;">
+
+    <Label text="Create Provider"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <Label fx:id="messageLabel"
+           textFill="red"
+           style="-fx-font-size: 14px;" />
+
+    <!-- Form -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="First Name:" prefWidth="100" />
+        <TextField fx:id="firstNameField" prefWidth="240" />
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Last Name:" prefWidth="100" />
+        <TextField fx:id="lastNameField" prefWidth="240" />
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Phone:" prefWidth="100" />
+        <TextField fx:id="phoneField" prefWidth="240" />
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Email:" prefWidth="100" />
+        <TextField fx:id="emailField" prefWidth="240" />
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Specialty:" prefWidth="100" />
+        <TextField fx:id="specialtyField" prefWidth="240" />
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Address:" prefWidth="100" />
+        <TextField fx:id="addressField" prefWidth="240" />
+    </HBox>
+
+    <!-- Buttons -->
+    <HBox spacing="20" alignment="CENTER">
+        <Button text="Create"
+                onAction="#handleCreateProvider"
+                style="-fx-font-size: 16px; -fx-padding: 8 16;" />
+
+        <Button text="Back"
+                onAction="#handleBack"
+                style="-fx-font-size: 16px; -fx-padding: 8 16;" />
+    </HBox>
+
+</VBox>

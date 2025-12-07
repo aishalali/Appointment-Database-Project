@@ -148,9 +148,7 @@ public class ProviderListController {
 
     @FXML
     public void handleCreateProvider() {
-        // We'll implement the real create screen later.
-        // For now, just a placeholder or TODO:
-        messageLabel.setText("Create Provider: not implemented yet.");
+        SceneNavigator.switchTo("/fxml/provider_create.fxml");
     }
 
     @FXML
