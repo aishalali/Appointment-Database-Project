@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<VBox spacing="20" alignment="TOP_CENTER"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.PatientDetailsController"
+      style="-fx-padding: 20;">
+
+    <Label text="Patient Details"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="20" vgap="10">
+
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30"/>
+            <ColumnConstraints percentWidth="70"/>
+        </columnConstraints>
+
+        <Label text="ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Label fx:id="idLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="First Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <Label fx:id="firstNameLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Last Name:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <Label fx:id="lastNameLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Date of Birth:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <Label fx:id="dobLabel" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Age:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <Label fx:id="ageLabel" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+        <Label text="Phone:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <Label fx:id="phoneLabel" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+        <Label text="Email:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+        <Label fx:id="emailLabel" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+        <Label text="Gender:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+        <Label fx:id="genderLabel" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+        <Label text="Height:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+        <Label fx:id="heightLabel" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+
+        <Label text="Weight:" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+        <Label fx:id="weightLabel" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+
+        <Label text="Insurance ID:" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+        <Label fx:id="insuranceLabel" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+
+        <Label text="Emergency Contact ID:" GridPane.rowIndex="11" GridPane.columnIndex="0"/>
+        <Label fx:id="emergencyContactLabel" GridPane.rowIndex="11" GridPane.columnIndex="1"/>
+
+    </GridPane>
+
+    <Label fx:id="messageLabel" style="-fx-text-fill: red;"/>
+
+    <HBox spacing="10">
+        <Button fx:id="updateButton"
+                text="Update Patient"
+                onAction="#handleUpdate"
+                style="-fx-padding: 8 20; -fx-font-size: 14;"/>
+
+        <Button fx:id="deleteButton"
+                text="Delete Patient"
+                onAction="#handleDelete"
+                style="-fx-padding: 8 20; -fx-font-size: 14; -fx-background-color: #cc0000; -fx-text-fill: white;"/>
+
+        <Button text="Back"
+                onAction="#handleBack"
+                style="-fx-padding: 8 20; -fx-font-size: 14;"/>
+    </HBox>
+
+</VBox>

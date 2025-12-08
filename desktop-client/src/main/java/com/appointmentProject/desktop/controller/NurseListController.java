@@ -5,10 +5,11 @@
  *          employed nurses.
  *
  * @author Matthew Kiyono
- * @version 1.1
+ * @version 2.0
  * @since 12/6/2025
  ********************************************************************/
 package com.appointmentProject.desktop.controller;
+
 import com.appointmentProject.desktop.SceneNavigator;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -26,7 +27,6 @@ import java.net.URL;
 
 public class NurseListController {
 
-    // --- FXML fields -------------------------------------------------
     @FXML private TableView<NurseRow> nursesTable;
     @FXML private TableColumn<NurseRow, Integer> idCol;
     @FXML private TableColumn<NurseRow, String> firstNameCol;
@@ -36,8 +36,10 @@ public class NurseListController {
     @FXML private TableColumn<NurseRow, String> addressCol;
 
     @FXML private Label messageLabel;
+    @FXML private TextField searchField;
 
-    // --- Inner row model ---------------------------------------------
+    private final ObservableList<NurseRow> masterList = FXCollections.observableArrayList();
+
     public static class NurseRow {
         private final int id;
         private final String firstName;
@@ -46,12 +48,7 @@ public class NurseListController {
         private final String email;
         private final String address;
 
-        public NurseRow(int id,
-                        String firstName,
-                        String lastName,
-                        String phone,
-                        String email,
-                        String address) {
+        public NurseRow(int id, String firstName, String lastName, String phone, String email, String address) {
             this.id = id;
             this.firstName = firstName;
             this.lastName = lastName;
@@ -68,9 +65,9 @@ public class NurseListController {
         public String getAddress() { return address; }
     }
 
-    // --- Initialize --------------------------------------------------
     @FXML
     private void initialize() {
+
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
@@ -78,10 +75,40 @@ public class NurseListController {
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
 
+        applyColumnStyling();
         loadNurses();
+
+        if (searchField != null) {
+            searchField.textProperty().addListener((obs, oldVal, newVal) -> filterNurses(newVal));
+        }
     }
 
-    // --- Load from backend -------------------------------------------
+    private void applyColumnStyling() {
+        nursesTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
+
+        centerAlign(idCol);
+        centerAlign(phoneCol);
+        leftAlign(firstNameCol);
+        leftAlign(lastNameCol);
+        leftAlign(emailCol);
+        leftAlign(addressCol);
+
+        idCol.setMinWidth(60);
+        firstNameCol.setMinWidth(140);
+        lastNameCol.setMinWidth(140);
+        phoneCol.setMinWidth(130);
+        emailCol.setMinWidth(200);
+        addressCol.setMinWidth(200);
+    }
+
+    private <T> void centerAlign(TableColumn<T, ?> col) {
+        col.setStyle("-fx-alignment: CENTER;");
+    }
+
+    private <T> void leftAlign(TableColumn<T, ?> col) {
+        col.setStyle("-fx-alignment: CENTER-LEFT;");
+    }
+
     private void loadNurses() {
         try {
             URL url = new URL("http://localhost:8080/nurse/all");
@@ -91,18 +118,19 @@ public class NurseListController {
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             StringBuilder sb = new StringBuilder();
             String line;
+
             while ((line = in.readLine()) != null) {
                 sb.append(line);
             }
             in.close();
 
-            String json = sb.toString();
-            JsonArray arr = com.google.gson.JsonParser.parseString(json).getAsJsonArray();
+            JsonArray arr = com.google.gson.JsonParser.parseString(sb.toString()).getAsJsonArray();
 
             ObservableList<NurseRow> rows = FXCollections.observableArrayList();
 
             for (JsonElement el : arr) {
                 JsonObject obj = el.getAsJsonObject();
+
                 int id = obj.get("id").getAsInt();
                 String firstName = obj.get("firstName").getAsString();
                 String lastName = obj.get("lastName").getAsString();
@@ -113,7 +141,8 @@ public class NurseListController {
                 rows.add(new NurseRow(id, firstName, lastName, phone, email, address));
             }
 
-            nursesTable.setItems(rows);
+            masterList.setAll(rows);
+            nursesTable.setItems(masterList);
             messageLabel.setText("");
 
         } catch (Exception e) {
@@ -122,7 +151,25 @@ public class NurseListController {
         }
     }
 
-    // --- Button handlers ---------------------------------------------
+    private void filterNurses(String query) {
+        if (query == null || query.isBlank()) {
+            nursesTable.setItems(masterList);
+            return;
+        }
+
+        String lower = query.toLowerCase();
+
+        ObservableList<NurseRow> filtered = masterList.filtered(n ->
+                n.getFirstName().toLowerCase().contains(lower) ||
+                        n.getLastName().toLowerCase().contains(lower) ||
+                        n.getPhone().toLowerCase().contains(lower) ||
+                        n.getEmail().toLowerCase().contains(lower) ||
+                        n.getAddress().toLowerCase().contains(lower) ||
+                        String.valueOf(n.getId()).contains(lower)
+        );
+
+        nursesTable.setItems(filtered);
+    }
 
     @FXML
     public void handleBack() {

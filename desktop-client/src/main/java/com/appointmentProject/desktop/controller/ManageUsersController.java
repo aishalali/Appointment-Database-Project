@@ -8,50 +8,90 @@
  *
  * @author Matthew Kiyono
  * @since 12/6/2025
- * @version 1.0
+ * @version 1.1
  ***********************************************************************/
-
 package com.appointmentProject.desktop.controller;
 
 import com.appointmentProject.desktop.SceneNavigator;
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ManageUsersController {
 
+
     @FXML private TableView<UserRow> usersTable;
     @FXML private TableColumn<UserRow, String> usernameCol;
     @FXML private TableColumn<UserRow, String> emailCol;
-    @FXML private TableColumn<UserRow, String> roleCol;
-    @FXML private Label messageLabel;
+    @FXML private TableColumn<UserRow, String> userTypeCol;
 
-    private final Gson gson = new Gson();
+    @FXML private Label messageLabel;
+    @FXML private TextField searchField;
+
+    private ObservableList<UserRow> masterList = FXCollections.observableArrayList();
+
+    // Row Model
+    public static class UserRow {
+        private final String username;
+        private final String email;
+        private final String userType;
+
+        public UserRow(String username, String email, String userType) {
+            this.username = username;
+            this.email = email;
+            this.userType = userType;
+        }
+
+        public String getUsername() { return username; }
+        public String getEmail() { return email; }
+        public String getUserType() { return userType; }
+    }
 
     @FXML
     private void initialize() {
+        // Bind columns
         usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-        roleCol.setCellValueFactory(new PropertyValueFactory<>("role"));
+        userTypeCol.setCellValueFactory(new PropertyValueFactory<>("userType"));
 
+        applyColumnStyling();
         loadUsers();
+
+        searchField.textProperty().addListener(
+                (obs, oldVal, newVal) -> filterUsers(newVal)
+        );
     }
 
-    // LOAD ALL USERS FROM BACKEND
+    private void applyColumnStyling() {
+        usersTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
+
+        usernameCol.setMinWidth(140);
+        emailCol.setMinWidth(200);
+        userTypeCol.setMinWidth(120);
+
+        leftAlign(usernameCol);
+        leftAlign(emailCol);
+        centerAlign(userTypeCol);
+    }
+
+    private <T> void leftAlign(TableColumn<T, ?> col) {
+        col.setStyle("-fx-alignment: CENTER-LEFT;");
+    }
+
+    private <T> void centerAlign(TableColumn<T, ?> col) {
+        col.setStyle("-fx-alignment: CENTER;");
+    }
+
     private void loadUsers() {
         try {
             URL url = new URL("http://localhost:8080/account/all");
@@ -59,23 +99,29 @@ public class ManageUsersController {
             con.setRequestMethod("GET");
 
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            JsonArray arr = gson.fromJson(in.readLine(), JsonArray.class);
+            StringBuilder sb = new StringBuilder();
+            String line;
+
+            while ((line = in.readLine()) != null)
+                sb.append(line);
             in.close();
+
+            JsonArray arr = com.google.gson.JsonParser.parseString(sb.toString()).getAsJsonArray();
 
             ObservableList<UserRow> rows = FXCollections.observableArrayList();
 
-            arr.forEach(elem -> {
-                JsonObject obj = elem.getAsJsonObject();
+            for (JsonElement el : arr) {
+                JsonObject obj = el.getAsJsonObject();
 
-                rows.add(new UserRow(
-                        obj.get("username").getAsString(),
-                        obj.get("email").getAsString(),
-                        obj.get("userType").getAsString()
-                ));
-            });
+                String username = obj.get("username").getAsString();
+                String email = obj.get("email").getAsString();
+                String userType = obj.get("userType").getAsString();
 
-            usersTable.setItems(rows);
-            messageLabel.setText("");
+                rows.add(new UserRow(username, email, userType));
+            }
+
+            masterList = rows;
+            usersTable.setItems(masterList);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,77 +129,43 @@ public class ManageUsersController {
         }
     }
 
-    // EDIT BUTTON CLICKED
-    @FXML
-    public void handleEditUser() {
-        UserRow selected = usersTable.getSelectionModel().getSelectedItem();
-
-        if (selected == null) {
-            messageLabel.setText("Select a user first.");
+    private void filterUsers(String query) {
+        if (query == null || query.isBlank()) {
+            usersTable.setItems(masterList);
             return;
         }
 
-        EditUserController.selectedUsername = selected.getUsername();
-        SceneNavigator.switchTo("/fxml/edit_user.fxml");
-    }
+        String lower = query.toLowerCase();
 
-    // DELETE BUTTON CLICKED
-    @FXML
-    public void handleDeleteUser() {
-        UserRow selected = usersTable.getSelectionModel().getSelectedItem();
+        ObservableList<UserRow> filtered = masterList.filtered(u ->
+                u.getUsername().toLowerCase().contains(lower) ||
+                        u.getEmail().toLowerCase().contains(lower) ||
+                        u.getUserType().toLowerCase().contains(lower)
+        );
 
-        if (selected == null) {
-            messageLabel.setText("Select a user first.");
-            return;
-        }
-
-        if (selected.getUsername().equals("admin")) {
-            messageLabel.setText("Admin account cannot be deleted.");
-            return;
-        }
-
-        try {
-            URL url = new URL("http://localhost:8080/account/delete/" + selected.getUsername());
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("DELETE");
-            con.getInputStream().close();
-
-            messageLabel.setStyle("-fx-text-fill: green;");
-            messageLabel.setText("User deleted.");
-
-            loadUsers();
-
-        } catch (Exception e) {
-            messageLabel.setStyle("-fx-text-fill: red;");
-            messageLabel.setText("Error deleting user.");
-            e.printStackTrace();
-        }
+        usersTable.setItems(filtered);
     }
 
     @FXML
-    public void handleCreateUser() {
-        SceneNavigator.switchTo("/fxml/create_user.fxml");
-    }
-
-    @FXML
-    public void handleBack() {
+    private void handleBack() {
         SceneNavigator.switchTo("/fxml/admin_dashboard.fxml");
     }
 
-    // TABLE ROW MODEL
-    public static class UserRow {
-        private final String username;
-        private final String email;
-        private final String role;
+    @FXML
+    private void handleCreateUser() {
+        SceneNavigator.switchTo("/fxml/user_create.fxml");
+    }
 
-        public UserRow(String username, String email, String role) {
-            this.username = username;
-            this.email = email;
-            this.role = role;
+    @FXML
+    private void handleEditUser() {
+        UserRow row = usersTable.getSelectionModel().getSelectedItem();
+        if (row == null) {
+            messageLabel.setText("Please select a user to edit.");
+            return;
         }
 
-        public String getUsername() { return username; }
-        public String getEmail() { return email; }
-        public String getRole() { return role; }
+        // Set selection AND navigate
+        EditUserController.selectedUsername = row.getUsername();
+        SceneNavigator.switchTo("/fxml/user_edit.fxml");
     }
 }

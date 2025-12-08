@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.ColumnConstraints?>
+
+<VBox spacing="20" alignment="TOP_CENTER"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.PatientCreateController"
+      style="-fx-padding: 20;">
+
+    <Label text="Create Patient" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="20" vgap="12">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="40"/>
+            <ColumnConstraints percentWidth="35"/>
+        </columnConstraints>
+
+        <!-- First Name -->
+        <Label text="First Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="firstNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Label fx:id="firstNameError" style="-fx-text-fill: red;" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+
+        <!-- Last Name -->
+        <Label text="Last Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="lastNameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Label fx:id="lastNameError" style="-fx-text-fill: red;" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+        <!-- DoB -->
+        <Label text="Date of Birth:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="dobPicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <Label fx:id="dobError" style="-fx-text-fill: red;" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+
+        <!-- Age -->
+        <Label text="Age:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="ageField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        <Label fx:id="ageError" style="-fx-text-fill: red;" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+
+        <!-- Weight -->
+        <Label text="Weight:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <TextField fx:id="weightField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        <Label fx:id="weightError" style="-fx-text-fill: red;" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+
+        <!-- Height -->
+        <Label text="Height:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <TextField fx:id="heightField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+        <Label fx:id="heightError" style="-fx-text-fill: red;" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+
+        <!-- Phone -->
+        <Label text="Phone:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+        <TextField fx:id="phoneField" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+        <Label fx:id="phoneError" style="-fx-text-fill: red;" GridPane.rowIndex="6" GridPane.columnIndex="2"/>
+
+        <!-- Email -->
+        <Label text="Email:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+        <TextField fx:id="emailField" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+        <Label fx:id="emailError" style="-fx-text-fill: red;" GridPane.rowIndex="7" GridPane.columnIndex="2"/>
+
+        <!-- Gender -->
+        <Label text="Gender:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+        <TextField fx:id="genderField" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+        <Label fx:id="genderError" style="-fx-text-fill: red;" GridPane.rowIndex="8" GridPane.columnIndex="2"/>
+
+        <!-- Insurance Dropdown -->
+        <Label text="Insurance:" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="insuranceDropdown" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+        <Label fx:id="insuranceError" style="-fx-text-fill: red;" GridPane.rowIndex="9" GridPane.columnIndex="2"/>
+
+        <!-- Emergency Contact Dropdown -->
+        <Label text="Emergency Contact:" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="emergencyDropdown" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+        <Label fx:id="emergencyError" style="-fx-text-fill: red;" GridPane.rowIndex="10" GridPane.columnIndex="2"/>
+
+    </GridPane>
+
+    <Button text="Submit" style="-fx-padding: 8 20; -fx-font-size: 14;" onAction="#handleSubmit"/>
+
+    <Button text="Back" style="-fx-padding: 8 20; -fx-font-size: 14;" onAction="#handleBack"/>
+
+</VBox>

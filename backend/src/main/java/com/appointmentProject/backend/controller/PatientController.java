@@ -6,7 +6,7 @@
  *
  * @author Matthew Kiyono
  * @since 12/4/2025
- * @version 1.0
+ * @version 1.1
  ********************************************************************************************************/
 package com.appointmentProject.backend.controller;
 

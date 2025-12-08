@@ -1,41 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
 
-<VBox spacing="10" alignment="CENTER"
+<VBox spacing="20" alignment="TOP_CENTER"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.appointmentProject.desktop.controller.ManagePatientController">
+      fx:controller="com.appointmentProject.desktop.controller.ManagePatientController"
+      style="-fx-padding: 20 60 20 60;">
 
-    <Label text="Manage Patients" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    <Label text="Manage Patients"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
 
-    <!-- NEW: Patient Table -->
-    <TableView fx:id="patientTable" prefHeight="300" prefWidth="700">
+    <!-- Unified Search Bar -->
+    <TextField fx:id="searchField"
+               promptText="Search patients..."
+               style="-fx-font-size: 14px; -fx-padding: 6; -fx-min-width: 300px;"/>
+
+    <!-- Patient Table -->
+    <TableView fx:id="patientTable" prefHeight="500">
 
         <columns>
-
-            <TableColumn fx:id="idCol" text="ID" prefWidth="70"/>
-            <TableColumn fx:id="firstNameCol" text="First Name" prefWidth="120"/>
-            <TableColumn fx:id="lastNameCol" text="Last Name" prefWidth="120"/>
-            <TableColumn fx:id="dobCol" text="DoB" prefWidth="120"/>
-            <TableColumn fx:id="emailCol" text="Email" prefWidth="160"/>
-            <TableColumn fx:id="phoneCol" text="Phone" prefWidth="120"/>
-
+            <TableColumn fx:id="idCol" text="ID"/>
+            <TableColumn fx:id="firstNameCol" text="First Name"/>
+            <TableColumn fx:id="lastNameCol" text="Last Name"/>
+            <TableColumn fx:id="dobCol" text="DoB"/>
+            <TableColumn fx:id="emailCol" text="Email"/>
+            <TableColumn fx:id="phoneCol" text="Phone"/>
         </columns>
 
     </TableView>
 
-    <Label fx:id="messageLabel" text="" style="-fx-text-fill: red;"/>
+    <!-- Create Patient Button (Role-Based Visibility in Controller) -->
+    <Button fx:id="createPatientButton"
+            text="Create Patient"
+            onAction="#handleCreatePatient"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
 
-    <!-- BACK BUTTON -->
-    <HBox alignment="CENTER" spacing="10">
+    <!-- Back Button -->
+    <HBox alignment="CENTER">
         <Button text="Back"
                 onAction="#handleBack"
-                style="-fx-font-size: 16px; -fx-padding: 8 16;"/>
+                style="-fx-font-size: 16px; -fx-padding: 8 20;" />
     </HBox>
 
 </VBox>
