@@ -56,7 +56,7 @@ public class Patient extends Person {
     private int id;
 
     @NotNull
-    @Column(name = "DoB",  nullable = false, columnDefinition = "DATE(0)")
+    @Column(name = "DoB", nullable = false, columnDefinition = "DATE(0)")
     private LocalDate DoB;
 
     @NotNull
@@ -64,24 +64,23 @@ public class Patient extends Person {
     private int age;
 
     @NotNull
-    @Column(name = "weight",  nullable = false)
+    @Column(name = "weight", nullable = false)
     private double weight;
 
     @NotNull
-    @Column(name = "height",  nullable = false)
+    @Column(name = "height", nullable = false)
     private double height;
-
 
     //optional variables
     @Column(name = "gender")
     private String gender;
 
-    @Column(name = "insuranceId")
+    // assuming you already aligned these column names with SQL (e.g. insurance_id, emergency_contact_id)
+    @Column(name = "insurance_id")
     private Integer insuranceId;
 
-    @Column(name = "emergencyContactId")
+    @Column(name = "emergency_contact_id")
     private Integer emergencyContactId;
-
 
     //Test Constructor ONLY!
     protected Patient() {
@@ -90,8 +89,10 @@ public class Patient extends Person {
 
     //private constructor used only by builder
     private Patient(Builder builder) {
+        // Person fields
         super(builder.firstName, builder.lastName, builder.phone, builder.email);
-        this.id = builder.id;
+
+        // id is NOT set by builder – JPA will generate it
         this.DoB = builder.DoB;
         this.age = builder.age;
         this.weight = builder.weight;
@@ -99,7 +100,6 @@ public class Patient extends Person {
         this.gender = builder.gender;
         this.insuranceId = builder.insuranceId;
         this.emergencyContactId = builder.emergencyContactId;
-
     }
 
     //getter methods
@@ -136,14 +136,14 @@ public class Patient extends Person {
     }
 
     //setter methods
-    public void setId(int id) {this.id = id;}
-    public void setDoB(LocalDate  DoB) {this.DoB = DoB;}
-    public void setAge(int age) {this.age = age;}
-    public void setWeight(double weight) {this.weight = weight;}
-    public void setHeight(double height) {this.height = height;}
-    public void setGender(String gender) {this.gender = gender;}
-    public void setInsuranceId(Integer inId) {this.insuranceId = inId;}
-    public void setEmergencyContactId(Integer ecId) {this.emergencyContactId = ecId;}
+    public void setId(int id) { this.id = id; }
+    public void setDoB(LocalDate DoB) { this.DoB = DoB; }
+    public void setAge(int age) { this.age = age; }
+    public void setWeight(double weight) { this.weight = weight; }
+    public void setHeight(double height) { this.height = height; }
+    public void setGender(String gender) { this.gender = gender; }
+    public void setInsuranceId(Integer inId) { this.insuranceId = inId; }
+    public void setEmergencyContactId(Integer ecId) { this.emergencyContactId = ecId; }
 
     //toString
     public String toString() {
@@ -161,8 +161,7 @@ public class Patient extends Person {
     }
 
     public static class Builder {
-        //required
-        private int id;
+        //required (no id here – DB handles it)
         private String firstName;
         private String lastName;
         private LocalDate DoB;
@@ -178,8 +177,13 @@ public class Patient extends Person {
         private Integer emergencyContactId;
 
         //constructor that utilizes only the required variables.
-        public Builder(int id, String firstName, String lastName, LocalDate DoB, int age, double weight, double height, String phone) {
-            this.id = id;
+        public Builder(String firstName,
+                       String lastName,
+                       LocalDate DoB,
+                       int age,
+                       double weight,
+                       double height,
+                       String phone) {
             this.firstName = firstName;
             this.lastName = lastName;
             this.phone = phone;
@@ -209,12 +213,10 @@ public class Patient extends Person {
             this.emergencyContactId = ecId;
             return this;
         }
+
         //combining provided variables
         public Patient build() {
             return new Patient(this);
         }
-
     }
-
-
 }

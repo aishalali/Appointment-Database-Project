@@ -1,14 +1,3 @@
-package com.appointmentProject.backend.service;
-
-import com.appointmentProject.backend.exception.RecordNotFoundException;
-import com.appointmentProject.backend.repository.InsuranceRepository;
-import com.appointmentProject.backend.model.Insurance;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-
 /******************************************************************************************************************
  * InsuranceService.java
  *
@@ -31,6 +20,18 @@ import java.util.Optional;
  * @version 1.0
  * @since 11/13/2025
  *******************************************************************************************************************/
+package com.appointmentProject.backend.service;
+
+import com.appointmentProject.backend.exception.RecordNotFoundException;
+import com.appointmentProject.backend.repository.InsuranceRepository;
+import com.appointmentProject.backend.model.Insurance;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+
 @Service
 public class InsuranceService {
 

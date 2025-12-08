@@ -40,7 +40,7 @@ public class PatientControllerUnitTest {
         controller.patientService = mockService;
 
         samplePatient = new Patient.Builder(
-                1,
+
                 "John",
                 "Doe",
                 LocalDate.of(1990, 1, 1),

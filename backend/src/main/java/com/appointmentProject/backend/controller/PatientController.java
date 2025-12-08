@@ -1,3 +1,13 @@
+
+/********************************************************************************************************
+ * PatientController.java
+ *
+ *          Handles Patient related requests.
+ *
+ * @author Matthew Kiyono
+ * @since 12/4/2025
+ * @version 1.0
+ ********************************************************************************************************/
 package com.appointmentProject.backend.controller;
 
 import com.appointmentProject.backend.exception.RecordNotFoundException;
@@ -10,15 +20,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/********************************************************************************************************
- * PatientController.java
- *
- *          Handles Patient related requests.
- *
- * @author Matthew Kiyono
- * @since 12/4/2025
- * @version 1.0
- ********************************************************************************************************/
 @RestController
 @RequestMapping("/patient")
 @CrossOrigin(origins = "*")

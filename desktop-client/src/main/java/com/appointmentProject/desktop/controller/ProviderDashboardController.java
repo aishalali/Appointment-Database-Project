@@ -11,6 +11,7 @@
 package com.appointmentProject.desktop.controller;
 
 import com.appointmentProject.desktop.SceneNavigator;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class ProviderDashboardController {
@@ -32,6 +33,11 @@ public class ProviderDashboardController {
         SceneNavigator.switchTo("/fxml/view_staff.fxml");
     }
 
+    @FXML
+    private void handleManagePatients(ActionEvent event) {
+        ManagePatientController.previousPage = "/fxml/provider_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/manage_patient.fxml");
+    }
 
 
     @FXML

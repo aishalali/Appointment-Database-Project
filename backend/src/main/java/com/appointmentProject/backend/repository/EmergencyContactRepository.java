@@ -1,6 +1,6 @@
 /********************************************************************************************
- *     InsuranceRepository
- *      The repository interface involving Insurance.
+ *     EmergencyContactRepository
+ *      The repository interface involving EmergencyContact.
  *
  *      The imports of Repository and JpaRepository automatically provide the following prompts:
  *      - findAll() - Select * query
@@ -20,29 +20,26 @@
  *
  * @author Matthew Kiyono
  * @version 1.0
- * @since 11/9/2025
+ * @since 12/7/2025
  *
  ********************************************************************************************/
 package com.appointmentProject.backend.repository;
 
-import com.appointmentProject.backend.model.Insurance;
+import com.appointmentProject.backend.model.EmergencyContact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.data.repository.query.Param;
+
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public interface InsuranceRepository extends JpaRepository<Insurance, Integer> {
+public interface EmergencyContactRepository extends JpaRepository<EmergencyContact, Integer> {
 
-    //Simplistic Additional Queries:
+    List<EmergencyContact> findByLastName(String lastName);
 
-    List<Insurance> findByInsuranceName(String insurance_name);
-    List<Insurance> findByPhone(String phoneNumber);
-    List<Insurance> findByEmail(String email);
-    List<Insurance> findByAddress(String address);
+    List<EmergencyContact> findByPhone(String phone);
 
-    //More Advanced Queries:
+    List<EmergencyContact> findByEmail(String email);
 
-
-
+    Optional<EmergencyContact> findByFirstNameAndLastName(String firstName, String lastName);
 }

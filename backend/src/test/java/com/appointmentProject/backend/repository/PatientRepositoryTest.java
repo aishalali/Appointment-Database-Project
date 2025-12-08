@@ -44,7 +44,7 @@ public class PatientRepositoryTest {
     @Test
     void testSaveAndFindAll() {
         Patient p = new Patient.Builder(
-                0,
+
                 "John",
                 "Doe",
                 LocalDate.of(1990, 1, 1),
@@ -70,7 +70,7 @@ public class PatientRepositoryTest {
     @Test
     void testFindByLastName() {
         Patient p1 = new Patient.Builder(
-                0,
+
                 "Alice",
                 "Smith",
                 LocalDate.of(1995, 5, 5),
@@ -85,7 +85,7 @@ public class PatientRepositoryTest {
                 .build();
 
         Patient p2 = new Patient.Builder(
-                0,
+
                 "Bob",
                 "Smith",
                 LocalDate.of(1992, 3, 10),
@@ -110,7 +110,7 @@ public class PatientRepositoryTest {
     @Test
     void testFindByInsuranceId() {
         Patient p = new Patient.Builder(
-                0,
+
                 "Carol",
                 "Jones",
                 LocalDate.of(1988, 8, 8),

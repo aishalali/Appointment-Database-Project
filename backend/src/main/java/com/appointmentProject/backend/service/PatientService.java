@@ -1,3 +1,12 @@
+/******************************************************************************************************************
+ * PatientService.java
+ *
+ *          Provides the CRUD operations and certain find queries for getting the patient data.
+ *
+ * @author Matthew Kiyono
+ * @since 12/4/2025
+ * @version 1.0
+ ******************************************************************************************************************/
 package com.appointmentProject.backend.service;
 
 import com.appointmentProject.backend.exception.RecordNotFoundException;
@@ -10,15 +19,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-/******************************************************************************************************************
- * PatientService.java
- *
- *          Provides the CRUD operations and certain find queries for getting the patient data.
- *
- * @author Matthew Kiyono
- * @since 12/4/2025
- * @version 1.0
- ******************************************************************************************************************/
 @Service
 public class PatientService {
 

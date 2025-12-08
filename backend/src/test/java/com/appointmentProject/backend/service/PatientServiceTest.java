@@ -43,7 +43,7 @@ public class PatientServiceTest {
     @BeforeEach
     void setup() {
         samplePatient = new Patient.Builder(
-                1,
+
                 "John",
                 "Doe",
                 LocalDate.of(1990, 1, 1),
@@ -72,7 +72,6 @@ public class PatientServiceTest {
     @Test
     void testUpdatePatient_Success() {
         Patient updated = new Patient.Builder(
-                1,
                 "Johnny",
                 "Doe",
                 LocalDate.of(1990, 1, 1),

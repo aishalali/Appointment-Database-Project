@@ -24,6 +24,7 @@ C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmen
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\TotalCost.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Nurse.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Room.java
+C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\repository\EmergencyContactRepository.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\Prescription.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\LabOrderService.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\exception\RecordNotFoundException.java
@@ -37,7 +38,9 @@ C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmen
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\controller\PatientController.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\dto\LoginRequest.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\ProviderService.java
+C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\controller\EmergencyContactController.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\util\PhoneNumberFormatter.java
+C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\EmergencyContactService.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\model\LabOrder.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\service\PatientService.java
 C:\Users\matth\Appointment-Database-Project\backend\src\main\java\com\appointmentProject\backend\repository\NurseRepository.java

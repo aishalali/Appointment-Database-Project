@@ -32,6 +32,12 @@ public class ReceptionistDashboardController {
         SceneNavigator.switchTo("/fxml/view_staff.fxml");
     }
 
+    @FXML
+    private void handleManagePatients() {
+        ManagePatientController.previousPage = "/fxml/receptionist_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/manage_patient.fxml");
+    }
+
 
     @FXML
     private void handleLogout() {

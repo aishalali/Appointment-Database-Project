@@ -24,7 +24,9 @@
             onAction="#handleViewStaff"
             style="-fx-font-size: 16px; -fx-padding: 8 16;" />
 
-    <Label text="(Placeholder — Provider tools coming soon)" />
+    <Button text="Manage Patients"
+            onAction="#handleManagePatients"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
 
     <Button text="Log Out"
             onAction="#handleLogout"/>

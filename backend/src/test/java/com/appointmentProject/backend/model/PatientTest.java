@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *          Prioritizes data integrity over logic in these tests.
  *
  * @author Matthew Kiyono
- * @version 1.1
+ * @version 1.2
  * @since 11/05/2025
  ****************************************************************************/
 public class PatientTest {
@@ -35,12 +35,11 @@ public class PatientTest {
         Integer EC_id1 = 490222, EC_id2 = null;
 
         Patient patient = new Patient.Builder(
-                id1, first1, last1, dob1, age1, weight1, height1, phone1).gender(gender1)
+                 first1, last1, dob1, age1, weight1, height1, phone1).gender(gender1)
                 .email(email1).insuranceId(IN_id1).emergencyContactId(EC_id1).build();
 
         //getter test
         assertAll(
-                () -> assertEquals(id1, patient.getId()),
                 () -> assertEquals(first1, patient.getFirstName()),
                 () -> assertEquals(last1, patient.getLastName()),
                 () -> assertEquals(dob1, patient.getDoB()),
@@ -69,7 +68,6 @@ public class PatientTest {
         patient.setEmergencyContactId(EC_id2);
 
         assertAll(
-                () -> assertEquals(id2, patient.getId()),
                 () -> assertEquals(first2, patient.getFirstName()),
                 () -> assertEquals(last2, patient.getLastName()),
                 () -> assertEquals(dob2, patient.getDoB()),
@@ -91,7 +89,7 @@ public class PatientTest {
         //Test Object
 
         Patient patient = new Patient.Builder(
-                23948805, "Leon", "Kennedy", LocalDate.of(1988,5, 22),
+ "Leon", "Kennedy", LocalDate.of(1988,5, 22),
                 38, 173.48, 5.8, "3210034897").gender("Male")
                 .email("lkennedy@R4evil.com").insuranceId(31908744)
                 .emergencyContactId(69229700).build();
