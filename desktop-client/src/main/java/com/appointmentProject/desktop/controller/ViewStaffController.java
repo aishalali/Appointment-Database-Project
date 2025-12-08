@@ -7,13 +7,12 @@
  *      the staff member is a Nurse, their specialty will say "Nurse".
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 2.0
  * @since 12/7/2025
  **************************************************************************/
 package com.appointmentProject.desktop.controller;
 
 import com.appointmentProject.desktop.SceneNavigator;
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -38,12 +37,13 @@ public class ViewStaffController {
     @FXML private TableColumn<StaffRow, String> specialtyCol;
 
     @FXML private Label messageLabel;
+    @FXML private TextField searchField;
 
-    private final Gson gson = new Gson();
-    public static String previousPage = "/fxml/login.fxml"; // fallback
+    public static String previousPage = "/fxml/login.fxml";
 
+    private final ObservableList<StaffRow> masterList = FXCollections.observableArrayList();
 
-    // Inner row model
+    // Row model
     public static class StaffRow {
         private final String firstName;
         private final String lastName;
@@ -51,11 +51,7 @@ public class ViewStaffController {
         private final String email;
         private final String specialty;
 
-        public StaffRow(String firstName,
-                        String lastName,
-                        String phone,
-                        String email,
-                        String specialty) {
+        public StaffRow(String firstName, String lastName, String phone, String email, String specialty) {
             this.firstName = firstName;
             this.lastName = lastName;
             this.phone = phone;
@@ -64,21 +60,52 @@ public class ViewStaffController {
         }
 
         public String getFirstName() { return firstName; }
-        public String getLastName()  { return lastName;  }
-        public String getPhone()     { return phone;     }
-        public String getEmail()     { return email;     }
+        public String getLastName() { return lastName; }
+        public String getPhone() { return phone; }
+        public String getEmail() { return email; }
         public String getSpecialty() { return specialty; }
     }
 
     @FXML
     private void initialize() {
+
+        // Bind columns
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         specialtyCol.setCellValueFactory(new PropertyValueFactory<>("specialty"));
 
+        applyColumnStyling();
         loadStaff();
+
+        // Live search
+        searchField.textProperty().addListener((obs, oldVal, newVal) -> filterStaff(newVal));
+    }
+
+    private void applyColumnStyling() {
+        staffTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
+
+        leftAlign(firstNameCol);
+        leftAlign(lastNameCol);
+        leftAlign(emailCol);
+
+        centerAlign(phoneCol);
+        centerAlign(specialtyCol);
+
+        firstNameCol.setMinWidth(140);
+        lastNameCol.setMinWidth(140);
+        phoneCol.setMinWidth(120);
+        emailCol.setMinWidth(200);
+        specialtyCol.setMinWidth(120);
+    }
+
+    private <T> void centerAlign(TableColumn<T, ?> col) {
+        col.setStyle("-fx-alignment: CENTER;");
+    }
+
+    private <T> void leftAlign(TableColumn<T, ?> col) {
+        col.setStyle("-fx-alignment: CENTER-LEFT;");
     }
 
     private void loadStaff() {
@@ -90,29 +117,29 @@ public class ViewStaffController {
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             StringBuilder sb = new StringBuilder();
             String line;
+
             while ((line = in.readLine()) != null) {
                 sb.append(line);
             }
             in.close();
 
-            String json = sb.toString();
-            JsonArray arr = com.google.gson.JsonParser.parseString(json).getAsJsonArray();
-
+            JsonArray arr = com.google.gson.JsonParser.parseString(sb.toString()).getAsJsonArray();
             ObservableList<StaffRow> rows = FXCollections.observableArrayList();
 
             for (JsonElement el : arr) {
                 JsonObject obj = el.getAsJsonObject();
 
                 String firstName = obj.get("firstName").getAsString();
-                String lastName  = obj.get("lastName").getAsString();
-                String phone     = obj.get("phone").getAsString();
-                String email     = obj.get("email").getAsString();
+                String lastName = obj.get("lastName").getAsString();
+                String phone = obj.get("phone").getAsString();
+                String email = obj.get("email").getAsString();
                 String specialty = obj.get("specialty").getAsString();
 
                 rows.add(new StaffRow(firstName, lastName, phone, email, specialty));
             }
 
-            staffTable.setItems(rows);
+            masterList.setAll(rows);
+            staffTable.setItems(masterList);
             messageLabel.setText("");
 
         } catch (Exception e) {
@@ -121,9 +148,27 @@ public class ViewStaffController {
         }
     }
 
-    @FXML
-    public void handleBack() {
-        SceneNavigator.switchTo(previousPage);
+    private void filterStaff(String query) {
+        if (query == null || query.isBlank()) {
+            staffTable.setItems(masterList);
+            return;
+        }
+
+        String lower = query.toLowerCase();
+
+        ObservableList<StaffRow> filtered = masterList.filtered(s ->
+                s.getFirstName().toLowerCase().contains(lower) ||
+                        s.getLastName().toLowerCase().contains(lower) ||
+                        s.getPhone().toLowerCase().contains(lower) ||
+                        s.getEmail().toLowerCase().contains(lower) ||
+                        s.getSpecialty().toLowerCase().contains(lower)
+        );
+
+        staffTable.setItems(filtered);
     }
 
+    @FXML
+    private void handleBack() {
+        SceneNavigator.switchTo(previousPage);
+    }
 }
