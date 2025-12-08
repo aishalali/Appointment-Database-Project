@@ -1,10 +1,3 @@
-package com.appointmentProject.backend.repository;
-
-import com.appointmentProject.backend.model.Patient;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /********************************************************************************************
  *     PatientRepository.java
@@ -15,6 +8,14 @@ import java.util.List;
  * @since 12/4/2025
  * @version 1.0
  ********************************************************************************************/
+package com.appointmentProject.backend.repository;
+
+import com.appointmentProject.backend.model.Patient;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Integer> {
 

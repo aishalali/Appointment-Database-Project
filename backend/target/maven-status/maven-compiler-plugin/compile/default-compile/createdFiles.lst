@@ -31,9 +31,11 @@ com\appointmentProject\backend\util\EmailFormatter.class
 com\appointmentProject\backend\model\Appointment.class
 com\appointmentProject\backend\controller\PatientController.class
 com\appointmentProject\backend\repository\InsuranceRepository.class
+com\appointmentProject\backend\controller\EmergencyContactController.class
 com\appointmentProject\backend\repository\ProviderRepository.class
 com\appointmentProject\backend\util\NullString.class
 com\appointmentProject\backend\model\Account.class
+com\appointmentProject\backend\repository\EmergencyContactRepository.class
 com\appointmentProject\backend\model\Billing$Builder.class
 com\appointmentProject\backend\repository\LabOrderRepository.class
 com\appointmentProject\backend\model\Prescription$Builder.class
@@ -43,6 +45,7 @@ com\appointmentProject\backend\model\Manufacturer.class
 com\appointmentProject\backend\model\Pharmacy.class
 com\appointmentProject\backend\model\Insurance.class
 com\appointmentProject\backend\repository\NurseRepository.class
+com\appointmentProject\backend\service\EmergencyContactService.class
 com\appointmentProject\backend\controller\ProviderController.class
 com\appointmentProject\backend\service\LabOrderService.class
 com\appointmentProject\backend\service\TotalCost.class

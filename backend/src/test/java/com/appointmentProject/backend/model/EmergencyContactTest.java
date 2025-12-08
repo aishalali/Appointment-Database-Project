@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *          Prioritizes data integrity over logic in these tests.
  *
  * @author Matthew Kiyono
- * @version 1.1
+ * @version 1.2
  * @since 11/05/2025
  ****************************************************************************/
 public class EmergencyContactTest {
@@ -27,11 +27,10 @@ public class EmergencyContactTest {
         String address1 = "1st Street", address2 = null;
 
         EmergencyContact ec = new EmergencyContact.Builder(
-               id1, first1, last1, phone1).email(email1).address(address1).build();
+               first1, last1, phone1).email(email1).address(address1).build();
 
         //getter tests
         assertAll(
-                () -> assertEquals(id1, ec.getId()),
                 () -> assertEquals(first1, ec.getFirstName()),
                 () -> assertEquals(last1, ec.getLastName()),
                 () -> assertEquals(phone1, ec.getPhone()),
@@ -48,7 +47,7 @@ public class EmergencyContactTest {
         ec.setAddress(address2);
 
         assertAll(
-                () -> assertEquals(id2, ec.getId()),
+
                 () -> assertEquals(first2, ec.getFirstName()),
                 () -> assertEquals(last2, ec.getLastName()),
                 () -> assertEquals(phone2, ec.getPhone()),
@@ -61,7 +60,7 @@ public class EmergencyContactTest {
     void testToString() {
         //Test Object
         EmergencyContact ec = new EmergencyContact.Builder(
-                55567832, "Zoey", "White", "4145763388")
+                 "Zoey", "White", "4145763388")
                 .email("zwhite@uwm.edu").address("733 Bluemound Rd").build();
 
         String expectedA =

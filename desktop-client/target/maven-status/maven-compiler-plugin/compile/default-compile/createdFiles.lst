@@ -10,7 +10,6 @@ com\appointmentProject\desktop\model\User.class
 com\appointmentProject\desktop\controller\ProviderCreateController.class
 com\appointmentProject\desktop\controller\ManageUsersController$UserRow.class
 com\appointmentProject\desktop\controller\CreateUserController.class
-com\appointmentProject\desktop\model\InsuranceDTO.class
 com\appointmentProject\desktop\controller\AccountManagementController.class
 com\appointmentProject\desktop\controller\ManageStaffController.class
 com\appointmentProject\desktop\controller\LoginController.class
@@ -19,8 +18,10 @@ com\appointmentProject\desktop\model\UserRow.class
 com\appointmentProject\desktop\controller\ProviderDashboardController.class
 com\appointmentProject\desktop\controller\NurseListController$NurseRow.class
 com\appointmentProject\desktop\controller\ManageProvidersController.class
+com\appointmentProject\desktop\controller\ManagePatientController$PatientRow.class
 com\appointmentProject\desktop\controller\EditUserController.class
 com\appointmentProject\desktop\controller\NurseCreateController.class
+com\appointmentProject\desktop\controller\AddPatientController.class
 com\appointmentProject\desktop\controller\AdminDashboardController.class
 com\appointmentProject\desktop\controller\EditPasswordController.class
 com\appointmentProject\desktop\DesktopApp.class
@@ -29,5 +30,6 @@ com\appointmentProject\desktop\controller\NurseEditController.class
 com\appointmentProject\desktop\controller\NurseListController.class
 com\appointmentProject\desktop\SessionData.class
 com\appointmentProject\desktop\api\ApiClient.class
+com\appointmentProject\desktop\controller\ManagePatientController.class
 com\appointmentProject\desktop\controller\NurseDashboardController.class
 com\appointmentProject\desktop\controller\ProviderListController.class
