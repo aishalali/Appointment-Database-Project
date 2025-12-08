@@ -9,7 +9,7 @@
  *      a table for display.
  *
  * @author Matthew Kiyono
- * @version 1.0
+ * @version 2.0
  * @since 12/1/2025
  **************************************************************************/
 
@@ -25,7 +25,6 @@ public class AdminDashboardController {
     private void initialize() {
         System.out.println("Admin Dashboard Loaded.");
     }
-
 
     @FXML
     public void handleManageAccount() {
@@ -47,6 +46,13 @@ public class AdminDashboardController {
     private void handleManagePatients(ActionEvent event) {
         ManagePatientController.previousPage = "/fxml/admin_dashboard.fxml";
         SceneNavigator.switchTo("/fxml/manage_patient.fxml");
+    }
+
+
+    @FXML
+    private void handleManageContacts() {
+        ManageContactsController.previousPage = "/fxml/admin_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/manage_contacts.fxml");
     }
 
     @FXML

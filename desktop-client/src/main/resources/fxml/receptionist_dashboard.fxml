@@ -27,6 +27,11 @@
             onAction="#handleManagePatients"
             style="-fx-font-size: 16px; -fx-padding: 8 20;" />
 
+    <Button text="Manage Contacts"
+            onAction="#handleManageContacts"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+
+
     <Button text="Log Out" onAction="#handleLogout"/>
 
 </VBox>

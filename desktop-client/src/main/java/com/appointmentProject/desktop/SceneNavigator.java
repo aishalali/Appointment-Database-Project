@@ -47,7 +47,7 @@ public class SceneNavigator {
 
         } catch (Exception e) {
             System.err.println("\n*********************************************");
-            System.err.println("❌ SCENE LOAD FAILED: " + fxmlPath);
+            System.err.println("SCENE LOAD FAILED: " + fxmlPath);
             System.err.println("*********************************************");
             e.printStackTrace();
             System.err.println("*********************************************\n");

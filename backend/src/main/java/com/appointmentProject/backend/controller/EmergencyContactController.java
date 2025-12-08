@@ -10,7 +10,7 @@
  *
  * @author Matthew Kiyono
  * @since 12/7/2025
- * @version 1.0
+ * @version 1.1
  ********************************************************************************************************/
 package com.appointmentProject.backend.controller;
 
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/emergency")
+@RequestMapping("/emergencycontact")
 @CrossOrigin(origins = "*")
 public class EmergencyContactController {
 

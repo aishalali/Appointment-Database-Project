@@ -4,7 +4,7 @@ Emergency Contact Rules:
 - first_name and last_name are a unique combination.
 - ONLY email and address can be null.
 */
-CREATE TABLE IF NOT EXISTS EmergencyContact (
+CREATE TABLE IF NOT EXISTS emergencycontact (
 id INT AUTO_INCREMENT PRIMARY KEY,
 first_name VARCHAR(100) NOT NULL,
 last_name VARCHAR(100) NOT NULL,

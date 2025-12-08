@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.ManageContactsController"
+      alignment="TOP_CENTER"
+      spacing="20"
+      style="-fx-padding: 20;">
+
+    <!-- Title -->
+    <Label text="Emergency Contacts"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <!-- Error / status message -->
+    <Label fx:id="messageLabel"
+           style="-fx-text-fill: red; -fx-font-size: 14;" />
+
+    <!-- Table -->
+    <TableView fx:id="contactTable"
+               prefWidth="700"
+               prefHeight="400">
+
+        <columns>
+            <TableColumn fx:id="idCol" text="ID" prefWidth="70"/>
+            <TableColumn fx:id="firstNameCol" text="First Name" prefWidth="200"/>
+            <TableColumn fx:id="lastNameCol" text="Last Name" prefWidth="200"/>
+            <TableColumn fx:id="phoneCol" text="Phone" prefWidth="200"/>
+        </columns>
+
+    </TableView>
+
+    <!-- Navigation -->
+    <HBox alignment="CENTER">
+        <Button text="Back"
+                onAction="#handleBack"
+                style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+    </HBox>
+
+</VBox>
