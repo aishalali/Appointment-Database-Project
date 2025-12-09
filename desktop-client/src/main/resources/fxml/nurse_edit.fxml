@@ -6,7 +6,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.appointmentProject.desktop.controller.NurseEditController"
+      fx:controller="com.appointmentProject.desktop.controller.nurse.NurseEditController"
       spacing="12"
       style="-fx-padding: 20;">
 

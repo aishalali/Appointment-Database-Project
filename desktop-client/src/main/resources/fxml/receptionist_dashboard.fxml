@@ -6,7 +6,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.appointmentProject.desktop.controller.ReceptionistDashboardController"
+      fx:controller="com.appointmentProject.desktop.controller.dashboard.ReceptionistDashboardController"
       alignment="CENTER"
       spacing="20">
 

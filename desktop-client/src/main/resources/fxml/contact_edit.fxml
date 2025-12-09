@@ -6,7 +6,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.appointmentProject.desktop.controller.ContactEditController"
+      fx:controller="com.appointmentProject.desktop.controller.emergencycontact.ContactEditController"
       spacing="15"
       alignment="TOP_CENTER"
       style="-fx-padding: 20;">

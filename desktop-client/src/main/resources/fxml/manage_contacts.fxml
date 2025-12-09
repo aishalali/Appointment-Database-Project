@@ -9,7 +9,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.appointmentProject.desktop.controller.ManageContactsController"
+      fx:controller="com.appointmentProject.desktop.controller.emergencycontact.ManageContactsController"
       alignment="TOP_CENTER"
       spacing="20"
       style="-fx-padding: 20;">
@@ -42,7 +42,7 @@
             style="-fx-font-size: 16px; -fx-padding: 8 20;" />
 
     <Button fx:id="editContactButton"
-            text="Create Contact"
+            text="Edit Contact"
             onAction="#handleEditContact"
             style="-fx-font-size: 16px; -fx-padding: 8 20;" />
 

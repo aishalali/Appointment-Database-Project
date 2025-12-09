@@ -6,7 +6,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.appointmentProject.desktop.controller.AccountManagementController"
+      fx:controller="com.appointmentProject.desktop.controller.dashboard.AccountManagementController"
       alignment="CENTER"
       spacing="30"
       style="-fx-padding: 40;">
