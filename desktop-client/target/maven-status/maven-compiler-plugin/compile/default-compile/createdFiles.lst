@@ -1,4 +1,5 @@
 com\appointmentProject\desktop\model\UserDTO.class
+com\appointmentProject\desktop\controller\MedicationListController$Row.class
 com\appointmentProject\desktop\controller\nurse\NurseCreateController.class
 com\appointmentProject\desktop\SceneNavigator.class
 com\appointmentProject\desktop\controller\provider\ProviderListController.class
@@ -20,8 +21,10 @@ com\appointmentProject\desktop\controller\ManageStaffController.class
 com\appointmentProject\desktop\controller\LoginController.class
 com\appointmentProject\desktop\controller\patient\PatientEditController.class
 com\appointmentProject\desktop\controller\account\ManageUsersController$UserRow.class
+com\appointmentProject\desktop\controller\ManufacturerListController.class
 com\appointmentProject\desktop\model\UserRow.class
 com\appointmentProject\desktop\controller\patient\ManagePatientController.class
+com\appointmentProject\desktop\controller\UserSession.class
 com\appointmentProject\desktop\controller\emergencycontact\ContactCreateController.class
 com\appointmentProject\desktop\controller\account\ManageUsersController.class
 com\appointmentProject\desktop\controller\patient\ManagePatientController$PatientRow.class
@@ -38,3 +41,5 @@ com\appointmentProject\desktop\controller\dashboard\EditPasswordController.class
 com\appointmentProject\desktop\controller\account\EditUserController.class
 com\appointmentProject\desktop\SessionData.class
 com\appointmentProject\desktop\api\ApiClient.class
+com\appointmentProject\desktop\controller\ManufacturerListController$Row.class
+com\appointmentProject\desktop\controller\MedicationListController.class
