@@ -18,6 +18,9 @@ import com.google.gson.JsonObject;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,15 +36,21 @@ public class ManageContactsController {
     public static String previousPage = "/fxml/admin_dashboard.fxml";
     public static String successMessage = "";
 
+    // UI fields
     @FXML private TableView<ContactRow> contactTable;
     @FXML private TableColumn<ContactRow, Integer> idCol;
     @FXML private TableColumn<ContactRow, String> firstNameCol;
     @FXML private TableColumn<ContactRow, String> lastNameCol;
     @FXML private TableColumn<ContactRow, String> phoneCol;
 
+    @FXML private TextField searchField;
     @FXML private Label messageLabel;
 
-    // Row model
+    private ObservableList<ContactRow> masterList;
+    private FilteredList<ContactRow> filteredList;
+    private SortedList<ContactRow> sortedList;
+
+    // Row Model
     public static class ContactRow {
         private final int id;
         private final String firstName;
@@ -69,15 +78,21 @@ public class ManageContactsController {
         lastNameCol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("lastName"));
         phoneCol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("phone"));
 
+        idCol.setSortable(true);
+        firstNameCol.setSortable(true);
+        lastNameCol.setSortable(true);
+        phoneCol.setSortable(true);
+
         if (!successMessage.isEmpty()) {
             messageLabel.setText(successMessage);
             successMessage = "";
         }
 
         loadContacts();
+        setupSearch();
     }
 
-    // Load contacts
+    // Load contacts (now includes SortedList)
     private void loadContacts() {
         try {
             URL url = new URL("http://localhost:8080/emergencycontact/all");
@@ -89,7 +104,7 @@ public class ManageContactsController {
             in.close();
 
             JsonArray arr = com.google.gson.JsonParser.parseString(json).getAsJsonArray();
-            ObservableList<ContactRow> rows = FXCollections.observableArrayList();
+            masterList = FXCollections.observableArrayList();
 
             for (JsonElement el : arr) {
                 JsonObject obj = el.getAsJsonObject();
@@ -99,10 +114,16 @@ public class ManageContactsController {
                 String last = obj.get("lastName").getAsString();
                 String phone = obj.get("phone").getAsString();
 
-                rows.add(new ContactRow(id, first, last, phone));
+                masterList.add(new ContactRow(id, first, last, phone));
             }
 
-            contactTable.setItems(rows);
+            filteredList = new FilteredList<>(masterList, p -> true);
+
+            // 🌟 THE FIX: wrap filteredList inside SortedList
+            sortedList = new SortedList<>(filteredList);
+            sortedList.comparatorProperty().bind(contactTable.comparatorProperty());
+
+            contactTable.setItems(sortedList);
 
         } catch (Exception e) {
             messageLabel.setText("Error loading contacts.");
@@ -110,13 +131,29 @@ public class ManageContactsController {
         }
     }
 
-    // Create contact page
+    // Search Filter
+    private void setupSearch() {
+        searchField.textProperty().addListener((obs, oldV, newV) -> {
+            String text = newV.toLowerCase();
+
+            filteredList.setPredicate(row -> {
+                if (text == null || text.isEmpty()) return true;
+
+                return row.getFirstName().toLowerCase().contains(text)
+                        || row.getLastName().toLowerCase().contains(text)
+                        || row.getPhone().toLowerCase().contains(text)
+                        || String.valueOf(row.getId()).contains(text);
+            });
+        });
+    }
+
+    // Create contact
     @FXML
     private void handleCreateContact() {
         SceneNavigator.switchTo("/fxml/contact_create.fxml");
     }
 
-    // Edit contact page
+    // Edit Contact
     @FXML
     private void handleEditContact() {
         ContactRow selected = contactTable.getSelectionModel().getSelectedItem();
@@ -145,9 +182,9 @@ public class ManageContactsController {
         }
     }
 
+    // Back
     @FXML
     private void handleBack() {
         SceneNavigator.switchTo(previousPage);
     }
 }
-
