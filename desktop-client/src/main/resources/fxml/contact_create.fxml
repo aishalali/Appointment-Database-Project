@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.*?>
+
+<VBox spacing="20" alignment="TOP_CENTER"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.ContactCreateController"
+      style="-fx-padding: 20;">
+
+    <Label text="Create Emergency Contact"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="20" vgap="12">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="25"/>
+            <ColumnConstraints percentWidth="40"/>
+            <ColumnConstraints percentWidth="35"/>
+        </columnConstraints>
+
+        <!-- First Name -->
+        <Label text="First Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="firstNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Label fx:id="firstNameError" style="-fx-text-fill: red;" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+
+        <!-- Last Name -->
+        <Label text="Last Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="lastNameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Label fx:id="lastNameError" style="-fx-text-fill: red;" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+        <!-- Phone -->
+        <Label text="Phone:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="phoneField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <Label fx:id="phoneError" style="-fx-text-fill: red;" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+
+        <!-- Email -->
+        <Label text="Email:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="emailField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        <Label fx:id="emailError" style="-fx-text-fill: red;" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+
+        <!-- Address -->
+        <Label text="Address:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <TextField fx:id="addressField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        <Label fx:id="addressError" style="-fx-text-fill: red;" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+
+    </GridPane>
+
+    <Button text="Submit"
+            style="-fx-padding: 8 20; -fx-font-size: 14;"
+            onAction="#handleSubmit"/>
+
+    <Button text="Back"
+            style="-fx-padding: 8 20; -fx-font-size: 14;"
+            onAction="#handleBack"/>
+
+</VBox>

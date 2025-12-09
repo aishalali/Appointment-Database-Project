@@ -113,6 +113,12 @@ public class ManageContactsController {
     }
 
 
+    //Create Contact Button
+    @FXML
+    private void handleCreateContact(){
+        SceneNavigator.switchTo("/fxml/contact_create.fxml");
+    }
+
     // Back navigation
     @FXML
     private void handleBack() {

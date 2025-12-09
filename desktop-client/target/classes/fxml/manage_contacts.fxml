@@ -36,6 +36,11 @@
 
     </TableView>
 
+    <Button fx:id="createContactButton"
+            text="Create Contact"
+            onAction="#handleCreateContact"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;" />
+
     <!-- Navigation -->
     <HBox alignment="CENTER">
         <Button text="Back"
