@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  *      - The Builder includes an ID parameter for compatibility with your existing pattern,
  *        but JPA will override it during persistence.
  *
- * @author Laaibah Ali and Matthew Kiyono
+ * @author Aisha Ali and Matthew Kiyono
  * @version 2.0
  * @since 12/03/2025
  ****************************************************************************************************/

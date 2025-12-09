@@ -13,46 +13,40 @@ package com.appointmentProject.backend.controller;
 import com.appointmentProject.backend.model.Pharmacy;
 import com.appointmentProject.backend.service.PharmacyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/pharmacy")
-@CrossOrigin(origins = "*")
+@RequestMapping("/pharmacies")
 public class PharmacyController {
 
     @Autowired
     private PharmacyService pharmacyService;
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Pharmacy>> getAllPharmacies() {
-        return ResponseEntity.ok(pharmacyService.getAllPharmacies());
+    @GetMapping
+    public List<Pharmacy> getAllPharmacies() {
+        return pharmacyService.getAllPharmacies();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pharmacy> getPharmacy(@PathVariable("id") int id) {
-        return ResponseEntity.ok(pharmacyService.getPharmacyById(id));
+    public Pharmacy getPharmacyById(@PathVariable int id) {
+        return pharmacyService.getPharmacyById(id);
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<Pharmacy> addPharmacy(@RequestBody Pharmacy pharmacy) {
-        return ResponseEntity.ok(pharmacyService.addPharmacy(pharmacy));
+    @PostMapping
+    public Pharmacy addPharmacy(@RequestBody Pharmacy pharmacy) {
+        return pharmacyService.addPharmacy(pharmacy);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Pharmacy> updatePharmacy(
-            @PathVariable("id") int id,
-            @RequestBody Pharmacy pharmacy
-    ) {
-        return ResponseEntity.ok(pharmacyService.updatePharmacy(id, pharmacy));
+    @PutMapping("/{id}")
+    public Pharmacy updatePharmacy(@PathVariable int id, @RequestBody Pharmacy pharmacy) {
+        return pharmacyService.updatePharmacy(id, pharmacy);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deletePharmacy(@PathVariable("id") int id) {
+    @DeleteMapping("/{id}")
+    public void deletePharmacy(@PathVariable int id) {
         pharmacyService.deletePharmacy(id);
-        return ResponseEntity.ok("Pharmacy deleted.");
     }
 }
 */
