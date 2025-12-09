@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.TableView?>
@@ -21,6 +21,11 @@
     <!-- Error / status message -->
     <Label fx:id="messageLabel"
            style="-fx-text-fill: red; -fx-font-size: 14;" />
+
+    <!-- Search Bar -->
+    <TextField fx:id="searchField"
+               promptText="Search contacts..."
+               style="-fx-font-size: 14px; -fx-pref-width: 250;" />
 
     <!-- Table -->
     <TableView fx:id="contactTable"
