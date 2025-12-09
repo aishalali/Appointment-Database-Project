@@ -7,7 +7,7 @@
  * @since 12/8/2025
  * @version 1.0
  ********************************************************************************************************/
-/*
+
 package com.appointmentProject.backend.controller;
 
 import com.appointmentProject.backend.model.Pharmacy;
@@ -49,4 +49,3 @@ public class PharmacyController {
         pharmacyService.deletePharmacy(id);
     }
 }
-*/
