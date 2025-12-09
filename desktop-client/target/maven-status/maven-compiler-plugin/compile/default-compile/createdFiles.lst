@@ -20,6 +20,7 @@ com\appointmentProject\desktop\controller\PatientDetailsController.class
 com\appointmentProject\desktop\controller\ProviderEditController.class
 com\appointmentProject\desktop\model\UserRow.class
 com\appointmentProject\desktop\controller\ProviderDashboardController.class
+com\appointmentProject\desktop\controller\ContactEditController.class
 com\appointmentProject\desktop\controller\NurseListController$NurseRow.class
 com\appointmentProject\desktop\controller\ContactCreateController.class
 com\appointmentProject\desktop\controller\ManageProvidersController.class
