@@ -15,11 +15,13 @@ import com.appointmentProject.desktop.SceneNavigator;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -28,10 +30,9 @@ import java.net.URL;
 
 public class ManageContactsController {
 
-    // Navigation tracking
     public static String previousPage = "/fxml/admin_dashboard.fxml";
+    public static String successMessage = "";
 
-    // UI fields
     @FXML private TableView<ContactRow> contactTable;
     @FXML private TableColumn<ContactRow, Integer> idCol;
     @FXML private TableColumn<ContactRow, String> firstNameCol;
@@ -40,8 +41,7 @@ public class ManageContactsController {
 
     @FXML private Label messageLabel;
 
-
-    // Row model for TableView
+    // Row model
     public static class ContactRow {
         private final int id;
         private final String firstName;
@@ -61,20 +61,23 @@ public class ManageContactsController {
         public String getPhone() { return phone; }
     }
 
-
     // Initialization
     @FXML
     private void initialize() {
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        idCol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("id"));
+        firstNameCol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("firstName"));
+        lastNameCol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("lastName"));
+        phoneCol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("phone"));
+
+        if (!successMessage.isEmpty()) {
+            messageLabel.setText(successMessage);
+            successMessage = "";
+        }
 
         loadContacts();
     }
 
-
-    // Load data from backend
+    // Load contacts
     private void loadContacts() {
         try {
             URL url = new URL("http://localhost:8080/emergencycontact/all");
@@ -82,19 +85,15 @@ public class ManageContactsController {
             con.setRequestMethod("GET");
 
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            StringBuilder sb = new StringBuilder();
-            String line;
-
-            while ((line = in.readLine()) != null) {
-                sb.append(line);
-            }
+            String json = in.readLine();
             in.close();
 
-            JsonArray arr = com.google.gson.JsonParser.parseString(sb.toString()).getAsJsonArray();
+            JsonArray arr = com.google.gson.JsonParser.parseString(json).getAsJsonArray();
             ObservableList<ContactRow> rows = FXCollections.observableArrayList();
 
             for (JsonElement el : arr) {
                 JsonObject obj = el.getAsJsonObject();
+
                 int id = obj.get("id").getAsInt();
                 String first = obj.get("firstName").getAsString();
                 String last = obj.get("lastName").getAsString();
@@ -104,7 +103,6 @@ public class ManageContactsController {
             }
 
             contactTable.setItems(rows);
-            messageLabel.setText("");
 
         } catch (Exception e) {
             messageLabel.setText("Error loading contacts.");
@@ -112,33 +110,44 @@ public class ManageContactsController {
         }
     }
 
-
-    //Create Contact Button
+    // Create contact page
     @FXML
-    private void handleCreateContact(){
+    private void handleCreateContact() {
         SceneNavigator.switchTo("/fxml/contact_create.fxml");
     }
 
-    //Edit Contact Button
+    // Edit contact page
     @FXML
     private void handleEditContact() {
         ContactRow selected = contactTable.getSelectionModel().getSelectedItem();
-
         if (selected == null) {
-            messageLabel.setText("Please select a contact first!");
             return;
         }
 
-        // Pass ID to editor
-        ContactEditController.selectedContactId = selected.getId();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/contact_edit.fxml"));
+            Parent root = loader.load();
 
-        // Navigate
-        SceneNavigator.switchTo("/fxml/contact_edit.fxml");
+            ContactEditController controller = loader.getController();
+            controller.loadContact(
+                    selected.getId(),
+                    selected.getFirstName(),
+                    selected.getLastName(),
+                    selected.getPhone(),
+                    null,
+                    null
+            );
+
+            SceneNavigator.setScene(root);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    // Back navigation
     @FXML
     private void handleBack() {
         SceneNavigator.switchTo(previousPage);
     }
 }
+

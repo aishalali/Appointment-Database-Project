@@ -84,6 +84,8 @@ public class LoginController {
             System.out.println("[LOGIN RAW BYTES] " + Arrays.toString(response.getBytes()));
 
             SessionData.currentUsername = username;
+            SessionData.currentUserRole = response;
+
 
             switch (response) {
                 case "ADMIN":

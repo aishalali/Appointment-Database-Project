@@ -1,73 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.appointmentProject.desktop.controller.emergencycontact.ContactEditController"
-      spacing="15"
-      alignment="TOP_CENTER"
+      spacing="10"
+      alignment="CENTER"
       style="-fx-padding: 20;">
 
-    <!-- Header -->
     <Label text="Edit Emergency Contact"
-           style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+           style="-fx-font-size: 20px; -fx-font-weight: bold;" />
 
-    <!-- Form Container -->
-    <GridPane hgap="10" vgap="12">
-        <columnConstraints>
-            <ColumnConstraints halignment="RIGHT" minWidth="120"/>
-            <ColumnConstraints halignment="LEFT" minWidth="250"/>
-        </columnConstraints>
+    <HBox spacing="10">
+        <Label text="First Name:"/>
+        <TextField fx:id="firstNameField" prefWidth="200"/>
+        <Label fx:id="firstNameError" textFill="red"/>
+    </HBox>
 
-        <!-- First Name -->
-        <Label text="First Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <TextField fx:id="firstNameField"
-                   GridPane.rowIndex="0" GridPane.columnIndex="1"
-                   promptText="Enter first name"/>
+    <HBox spacing="10">
+        <Label text="Last Name:"/>
+        <TextField fx:id="lastNameField" prefWidth="200"/>
+        <Label fx:id="lastNameError" textFill="red"/>
+    </HBox>
 
-        <!-- Last Name -->
-        <Label text="Last Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-        <TextField fx:id="lastNameField"
-                   GridPane.rowIndex="1" GridPane.columnIndex="1"
-                   promptText="Enter last name"/>
+    <HBox spacing="10">
+        <Label text="Phone:"/>
+        <TextField fx:id="phoneField" prefWidth="200"/>
+        <Label fx:id="phoneError" textFill="red"/>
+    </HBox>
 
-        <!-- Phone -->
-        <Label text="Phone:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-        <TextField fx:id="phoneField"
-                   GridPane.rowIndex="2" GridPane.columnIndex="1"
-                   promptText="Enter phone number"/>
+    <HBox spacing="10">
+        <Label text="Email:"/>
+        <TextField fx:id="emailField" prefWidth="200"/>
+        <Label fx:id="emailError" textFill="red"/>
+    </HBox>
 
-        <!-- Email -->
-        <Label text="Email:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-        <TextField fx:id="emailField"
-                   GridPane.rowIndex="3" GridPane.columnIndex="1"
-                   promptText="Enter email (optional)"/>
+    <HBox spacing="10">
+        <Label text="Address:"/>
+        <TextField fx:id="addressField" prefWidth="200"/>
+        <Label fx:id="addressError" textFill="red"/>
+    </HBox>
 
-        <!-- Address -->
-        <Label text="Address:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-        <TextField fx:id="addressField"
-                   GridPane.rowIndex="4" GridPane.columnIndex="1"
-                   promptText="Enter address (optional)"/>
-
-    </GridPane>
-
-    <!-- Message Label -->
-    <Label fx:id="messageLabel"
-           style="-fx-text-fill: red; -fx-font-size: 14px;" />
-
-
-    <!-- Button Row -->
     <HBox spacing="15" alignment="CENTER">
-        <Button text="Save"
+        <Button text="Save Changes"
                 onAction="#handleSave"
-                style="-fx-font-size: 14px; -fx-padding: 6 18;" />
+                style="-fx-font-size: 14px; -fx-padding: 6 14;" />
 
-        <Button text="Back"
-                onAction="#handleBack"
-                style="-fx-font-size: 14px; -fx-padding: 6 18;" />
+        <Button text="Cancel"
+                onAction="#handleCancel"
+                style="-fx-font-size: 14px; -fx-padding: 6 14;" />
+
+        <Button fx:id="deleteButton"
+                text="Delete Contact"
+                onAction="#handleDelete"
+                style="-fx-font-size: 14px; -fx-padding: 6 14; -fx-background-color: #d9534f; -fx-text-fill: white;" />
     </HBox>
 
 </VBox>
