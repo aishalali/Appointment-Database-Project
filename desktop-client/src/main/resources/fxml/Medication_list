@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.MedicationListController"
+      alignment="TOP_CENTER"
+      spacing="20"
+      style="-fx-padding: 20;">
+
+    <HBox spacing="15" alignment="CENTER">
+        <Button fx:id="createButton" text="Create Medication" onAction="#handleCreate"/>
+        <Button fx:id="editButton" text="Edit Medication" onAction="#handleEdit"/>
+        <Button fx:id="deleteButton" text="Delete" onAction="#handleDelete"/>
+        <Button text="Back" onAction="#handleBack"/>
+    </HBox>
+
+    <TextField fx:id="searchField" promptText="Search..." maxWidth="300"/>
+
+    <Label fx:id="messageLabel" textFill="red"/>
+
+    <Label text="Medication List"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="table" prefWidth="900" prefHeight="450">
+        <columns>
+            <TableColumn fx:id="idCol" text="ID" prefWidth="60"/>
+            <TableColumn fx:id="nameCol" text="Name" prefWidth="150"/>
+            <TableColumn fx:id="strengthCol" text="Strength" prefWidth="150"/>
+            <TableColumn fx:id="typeCol" text="Type" prefWidth="100"/>
+            <TableColumn fx:id="consumptionCol" text="Consumption" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+</VBox>

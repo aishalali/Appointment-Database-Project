@@ -11,50 +11,48 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ManufacturerListController {
+public class MedicationListController {
 
     @FXML private TableView<Row> table;
     @FXML private TableColumn<Row, Integer> idCol;
     @FXML private TableColumn<Row, String> nameCol;
-    @FXML private TableColumn<Row, String> phoneCol;
-    @FXML private TableColumn<Row, String> emailCol;
-    @FXML private TableColumn<Row, String> addressCol;
+    @FXML private TableColumn<Row, String> strengthCol;
+    @FXML private TableColumn<Row, String> typeCol;
+    @FXML private TableColumn<Row, String> consumptionCol;
 
     @FXML private TextField searchField;
     @FXML private Label messageLabel;
 
-    @FXML private Button createButton;
-    @FXML private Button editButton;
-    @FXML private Button deleteButton;
+    @FXML private Button createButton, editButton, deleteButton;
 
     private final ObservableList<Row> masterList = FXCollections.observableArrayList();
 
     public static class Row {
         private final int id;
-        private final String name, phone, email, address;
+        private final String name, strength, type, consumption;
 
-        public Row(int id, String name, String phone, String email, String address) {
-            this.id = id; this.name = name; this.phone = phone; this.email = email; this.address = address;
+        public Row(int id, String name, String strength, String type, String consumption) {
+            this.id = id; this.name = name; this.strength = strength;
+            this.type = type; this.consumption = consumption;
         }
+
         public int getId() { return id; }
         public String getName() { return name; }
-        public String getPhone() { return phone; }
-        public String getEmail() { return email; }
-        public String getAddress() { return address; }
+        public String getStrength() { return strength; }
+        public String getType() { return type; }
+        public String getConsumption() { return consumption; }
     }
 
     @FXML
     private void initialize() {
         idCol.setCellValueFactory(c -> new javafx.beans.property.SimpleIntegerProperty(c.getValue().getId()).asObject());
         nameCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getName()));
-        phoneCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getPhone()));
-        emailCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getEmail()));
-        addressCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getAddress()));
+        strengthCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getStrength()));
+        typeCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getType()));
+        consumptionCol.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getConsumption()));
 
         loadData();
-
         searchField.textProperty().addListener((o, oldV, newV) -> filter(newV));
-
         applyAdminPermissions();
     }
 
@@ -67,13 +65,13 @@ public class ManufacturerListController {
 
     private void loadData() {
         try {
-            URL url = new URL("http://localhost:8080/manufacturer/all");
+            URL url = new URL("http://localhost:8080/medication/all");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String response = in.lines().reduce("", (a, b) -> a + b);
-            in.close();
+            BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String response = br.lines().reduce("", (a, b) -> a + b);
+            br.close();
 
             JsonArray arr = JsonParser.parseString(response).getAsJsonArray();
 
@@ -82,10 +80,10 @@ public class ManufacturerListController {
                 JsonObject o = e.getAsJsonObject();
                 masterList.add(new Row(
                         o.get("id").getAsInt(),
-                        o.get("manufacturerName").getAsString(),
-                        o.get("phone").getAsString(),
-                        o.get("email").getAsString(),
-                        o.get("address").getAsString()
+                        o.get("medName").getAsString(),
+                        o.get("strength").getAsString(),
+                        o.get("type").getAsString(),
+                        o.get("consumption").getAsString()
                 ));
             }
 
@@ -93,7 +91,7 @@ public class ManufacturerListController {
 
         } catch (Exception e) {
             e.printStackTrace();
-            messageLabel.setText("Failed to load data");
+            messageLabel.setText("Failed to load medication data");
         }
     }
 
@@ -105,13 +103,12 @@ public class ManufacturerListController {
 
         String lower = q.toLowerCase();
         table.setItems(masterList.filtered(x ->
-                x.getName().toLowerCase().contains(lower) ||
-                        x.getEmail().toLowerCase().contains(lower)
+                x.getName().toLowerCase().contains(lower)
         ));
     }
 
-    @FXML private void handleCreate() { /* open create screen */ }
-    @FXML private void handleEdit() { /* open edit screen */ }
+    @FXML private void handleCreate() { /* open create form */ }
+    @FXML private void handleEdit() { /* open edit form */ }
     @FXML private void handleDelete() { /* delete logic */ }
     @FXML private void handleBack() { SceneNavigator.switchTo("/fxml/manage_admin.fxml"); }
 }
