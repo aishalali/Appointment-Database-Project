@@ -47,10 +47,21 @@ public class SceneNavigator {
 
         } catch (Exception e) {
             System.err.println("\n*********************************************");
-            System.err.println("❌ SCENE LOAD FAILED: " + fxmlPath);
+            System.err.println("SCENE LOAD FAILED: " + fxmlPath);
             System.err.println("*********************************************");
             e.printStackTrace();
             System.err.println("*********************************************\n");
         }
     }
+    public static void setScene(Parent root) {
+        try {
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+            System.out.println("[SceneNavigator] Scene switched via setScene().");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

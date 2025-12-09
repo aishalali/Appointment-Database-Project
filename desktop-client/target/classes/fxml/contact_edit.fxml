@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.emergencycontact.ContactEditController"
+      spacing="10"
+      alignment="CENTER"
+      style="-fx-padding: 20;">
+
+    <Label text="Edit Emergency Contact"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <HBox spacing="10">
+        <Label text="First Name:"/>
+        <TextField fx:id="firstNameField" prefWidth="200"/>
+        <Label fx:id="firstNameError" textFill="red"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Last Name:"/>
+        <TextField fx:id="lastNameField" prefWidth="200"/>
+        <Label fx:id="lastNameError" textFill="red"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Phone:"/>
+        <TextField fx:id="phoneField" prefWidth="200"/>
+        <Label fx:id="phoneError" textFill="red"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Email:"/>
+        <TextField fx:id="emailField" prefWidth="200"/>
+        <Label fx:id="emailError" textFill="red"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Label text="Address:"/>
+        <TextField fx:id="addressField" prefWidth="200"/>
+        <Label fx:id="addressError" textFill="red"/>
+    </HBox>
+
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Save Changes"
+                onAction="#handleSave"
+                style="-fx-font-size: 14px; -fx-padding: 6 14;" />
+
+        <Button text="Cancel"
+                onAction="#handleCancel"
+                style="-fx-font-size: 14px; -fx-padding: 6 14;" />
+
+        <Button fx:id="deleteButton"
+                text="Delete Contact"
+                onAction="#handleDelete"
+                style="-fx-font-size: 14px; -fx-padding: 6 14; -fx-background-color: #d9534f; -fx-text-fill: white;" />
+    </HBox>
+
+</VBox>

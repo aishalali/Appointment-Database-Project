@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.appointmentProject.desktop.controller.MedicationListController"
+      alignment="TOP_CENTER"
+      spacing="20"
+      style="-fx-padding: 20;">
+
+
+    <!-- Admin Buttons -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button fx:id="createButton" text="Create Manufacturer"
+                style="-fx-font-size: 16px;" onAction="#handleCreate"/>
+        <Button fx:id="editButton" text="Edit Manufacturer"
+                style="-fx-font-size: 16px;" onAction="#handleEdit"/>
+        <Button fx:id="deleteButton" text="Delete"
+                style="-fx-font-size: 16px;" onAction="#handleDelete"/>
+        <Button text="Back" style="-fx-font-size: 16px;" onAction="#handleBack"/>
+    </HBox>
+
+    <TextField fx:id="searchField" promptText="Search..." maxWidth="300"/>
+
+    <Label fx:id="messageLabel" textFill="red"/>
+
+    <Label text="Manufacturer List"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="table" prefWidth="900" prefHeight="450">
+        <columns>
+            <TableColumn fx:id="idCol" text="ID" prefWidth="80"/>
+            <TableColumn fx:id="nameCol" text="Name" prefWidth="150"/>
+            <TableColumn fx:id="phoneCol" text="Phone" prefWidth="150"/>
+            <TableColumn fx:id="emailCol" text="Email" prefWidth="200"/>
+            <TableColumn fx:id="addressCol" text="Address" prefWidth="250"/>
+        </columns>
+    </TableView>
+
+</VBox>

@@ -10,7 +10,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.appointmentProject.desktop.controller.ManageUsersController"
+      fx:controller="com.appointmentProject.desktop.controller.account.ManageUsersController"
       alignment="TOP_CENTER"
       spacing="20"
       style="-fx-padding: 20;">
@@ -43,6 +43,11 @@
 
         </columns>
     </TableView>
+
+    <Button text="Edit User"
+            style="-fx-font-size: 16px; -fx-padding: 8 20;"
+            onAction="#handleEditUser"/>
+
 
     <HBox alignment="CENTER" spacing="15">
         <Button text="Back"

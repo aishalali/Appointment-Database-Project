@@ -9,7 +9,7 @@
 <VBox spacing="20" alignment="TOP_CENTER"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.appointmentProject.desktop.controller.PatientDetailsController"
+      fx:controller="com.appointmentProject.desktop.controller.patient.PatientDetailsController"
       style="-fx-padding: 20;">
 
     <Label text="Patient Details"

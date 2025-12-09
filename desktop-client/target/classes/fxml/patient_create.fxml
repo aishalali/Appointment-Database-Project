@@ -7,7 +7,7 @@
 <VBox spacing="20" alignment="TOP_CENTER"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.appointmentProject.desktop.controller.PatientCreateController"
+      fx:controller="com.appointmentProject.desktop.controller.patient.PatientCreateController"
       style="-fx-padding: 20;">
 
     <Label text="Create Patient" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
