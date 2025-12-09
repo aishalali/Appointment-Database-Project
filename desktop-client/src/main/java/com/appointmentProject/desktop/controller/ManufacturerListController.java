@@ -113,5 +113,9 @@ public class ManufacturerListController {
     @FXML private void handleCreate() { /* open create screen */ }
     @FXML private void handleEdit() { /* open edit screen */ }
     @FXML private void handleDelete() { /* delete logic */ }
-    @FXML private void handleBack() { SceneNavigator.switchTo("/fxml/manage_admin.fxml"); }
+    @FXML
+    public void handleBack() {
+        SceneNavigator.switchTo("/fxml/admin_dashboard.fxml");
+    }
+
 }

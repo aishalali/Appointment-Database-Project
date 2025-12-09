@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.appointmentProject.desktop.controller.ManufacturerListController"
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.appointmentProject.desktop.controller.MedicationListController"
       alignment="TOP_CENTER"
       spacing="20"
       style="-fx-padding: 20;">
+
 
     <!-- Admin Buttons -->
     <HBox spacing="15" alignment="CENTER">

@@ -110,5 +110,11 @@ public class MedicationListController {
     @FXML private void handleCreate() { /* open create form */ }
     @FXML private void handleEdit() { /* open edit form */ }
     @FXML private void handleDelete() { /* delete logic */ }
-    @FXML private void handleBack() { SceneNavigator.switchTo("/fxml/manage_admin.fxml"); }
+    @FXML
+    public void handleBack() {
+        SceneNavigator.switchTo("/fxml/admin_dashboard.fxml");
+    }
+
+}
+
 }
