@@ -64,6 +64,11 @@ public class AdminDashboardController {
     }
 
     @FXML
+    private void handleManageRooms() {
+        SceneNavigator.switchTo("/fxml/room_list.fxml");
+    }
+
+    @FXML
     private void handleLogout() {
         SceneNavigator.switchTo("/fxml/login.fxml");
     }

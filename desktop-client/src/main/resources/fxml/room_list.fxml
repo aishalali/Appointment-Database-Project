@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.room.RoomListController"
+      spacing="14"
+      style="-fx-padding: 20;">
+
+    <Label text="Room List"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <Label fx:id="messageLabel" textFill="red"/>
+
+    <!-- Table -->
+    <TableView fx:id="roomTable" prefHeight="300">
+        <columns>
+            <TableColumn fx:id="roomNumberColumn"
+                         text="Room Number"
+                         prefWidth="150" />
+            <TableColumn fx:id="floorNumberColumn"
+                         text="Floor Number"
+                         prefWidth="150" />
+        </columns>
+    </TableView>
+
+    <!-- Buttons -->
+    <HBox spacing="10">
+        <Button text="Create Room"
+                onAction="#handleCreateRoom"
+                style="-fx-padding: 8 16; -fx-font-size: 16px;" />
+
+        <Button text="Edit Room"
+                onAction="#handleEditRoom"
+                style="-fx-padding: 8 16; -fx-font-size: 16px;" />
+
+        <Button text="Delete Room"
+                onAction="#handleDeleteRoom"
+                style="-fx-padding: 8 16; -fx-font-size: 16px;" />
+
+        <Button text="Back"
+                onAction="#handleBack"
+                style="-fx-padding: 8 16; -fx-font-size: 16px;" />
+    </HBox>
+
+</VBox>
