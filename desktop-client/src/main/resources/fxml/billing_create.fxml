@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.billing.BillingCreateController"
+      spacing="12"
+      style="-fx-padding:20;">
+
+    <Label text="Create Billing"
+           style="-fx-font-size:24px; -fx-font-weight:bold;" />
+
+    <Label fx:id="messageLabel" textFill="red"/>
+
+    <TextField fx:id="costField" promptText="Cost"/>
+    <TextField fx:id="statusOfPaymentField" promptText="Status of Payment"/>
+    <TextField fx:id="paymentTypeField" promptText="Payment Type"/>
+    <TextField fx:id="insuranceIdField" promptText="Insurance ID"/>
+
+    <HBox spacing="10">
+        <Button text="Create" onAction="#handleCreateBilling"
+                style="-fx-padding: 8 16; -fx-font-size:16px;" />
+
+        <Button text="Back" onAction="#handleBack"
+                style="-fx-padding: 8 16; -fx-font-size:16px;" />
+    </HBox>
+
+</VBox>
