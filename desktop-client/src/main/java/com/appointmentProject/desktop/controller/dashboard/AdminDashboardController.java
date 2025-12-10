@@ -58,6 +58,12 @@ public class AdminDashboardController {
     }
 
     @FXML
+    private void handleManageBillings() {
+        ManageContactsController.previousPage = "/fxml/admin_dashboard.fxml";
+        SceneNavigator.switchTo("/fxml/manage_billings.fxml");
+    }
+
+    @FXML
     private void handleLogout() {
         SceneNavigator.switchTo("/fxml/login.fxml");
     }
