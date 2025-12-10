@@ -12,6 +12,7 @@ com\appointmentProject\desktop\controller\provider\ProviderCreateController.clas
 com\appointmentProject\desktop\model\User.class
 com\appointmentProject\desktop\controller\nurse\NurseListController$NurseRow.class
 com\appointmentProject\desktop\controller\patient\AddPatientController.class
+com\appointmentProject\desktop\controller\billing\BillingListController.class
 com\appointmentProject\desktop\controller\emergencycontact\ManageContactsController$ContactRow.class
 com\appointmentProject\desktop\controller\provider\ProviderListController$ProviderRow.class
 com\appointmentProject\desktop\controller\dashboard\EditAccountEmailController.class
@@ -20,6 +21,7 @@ com\appointmentProject\desktop\controller\dashboard\NurseDashboardController.cla
 com\appointmentProject\desktop\controller\ManageStaffController.class
 com\appointmentProject\desktop\controller\LoginController.class
 com\appointmentProject\desktop\controller\patient\PatientEditController.class
+com\appointmentProject\desktop\controller\billing\BillingEditController.class
 com\appointmentProject\desktop\controller\account\ManageUsersController$UserRow.class
 com\appointmentProject\desktop\controller\ManufacturerListController.class
 com\appointmentProject\desktop\model\UserRow.class
@@ -33,6 +35,7 @@ com\appointmentProject\desktop\controller\provider\ProviderEditController.class
 com\appointmentProject\desktop\controller\emergencycontact\ManageContactsController.class
 com\appointmentProject\desktop\controller\emergencycontact\ContactEditController.class
 com\appointmentProject\desktop\controller\dashboard\ReceptionistDashboardController.class
+com\appointmentProject\desktop\controller\billing\BillingCreateController.class
 com\appointmentProject\desktop\controller\account\CreateUserController.class
 com\appointmentProject\desktop\controller\dashboard\AccountManagementController.class
 com\appointmentProject\desktop\DesktopApp.class
@@ -42,4 +45,5 @@ com\appointmentProject\desktop\controller\account\EditUserController.class
 com\appointmentProject\desktop\SessionData.class
 com\appointmentProject\desktop\api\ApiClient.class
 com\appointmentProject\desktop\controller\ManufacturerListController$Row.class
+com\appointmentProject\desktop\controller\billing\BillingListController$BillingRow.class
 com\appointmentProject\desktop\controller\MedicationListController.class

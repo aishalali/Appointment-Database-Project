@@ -70,16 +70,16 @@ public class Billing {
     private double cost;
 
     @NotNull
-    @Column(name = "statusOfPayment", nullable = false)
+    @Column(name = "status_of_payment", nullable = false)
     private String statusOfPayment;
 
     @NotNull
-    @Column(name = "paymentType", nullable = false)
+    @Column(name = "payment_type", nullable = false)
     private String paymentType;
 
 
     //optional variables
-    @Column(name = "insuranceId")
+    @Column(name = "insurance_id")
     private Integer insuranceId;
 
     //Test Constructor Only!

@@ -41,12 +41,12 @@ public class BillingListController {
 
     public static class BillingRow {
         private final int id;
-        private final String cost;
+        private final double cost;
         private final String statusOfPayment;
         private final String paymentType;
         private final String insuranceId;
 
-        public BillingRow(int id, String cost, String statusOfPayment, String paymentType, String insuranceId) {
+        public BillingRow(int id, double cost, String statusOfPayment, String paymentType, String insuranceId) {
             this.id = id;
             this.cost = cost;
             this.statusOfPayment = statusOfPayment;
@@ -55,7 +55,7 @@ public class BillingListController {
         }
 
         public int getId() { return id; }
-        public String getCost() { return cost; }
+        public double getCost() { return cost; }
         public String getStatusOfPayment() { return statusOfPayment; }
         public String getPaymentType() { return paymentType; }
         public String getInsuranceId() { return insuranceId; }
@@ -125,10 +125,15 @@ public class BillingListController {
                 JsonObject obj = el.getAsJsonObject();
 
                 int id = obj.get("id").getAsInt();
-                String cost = obj.get("cost").getAsString();
+                double cost = obj.get("cost").getAsDouble();
                 String statusOfPayment = obj.get("statusOfPayment").getAsString();
                 String paymentType = obj.get("paymentType").getAsString();
-                String insuranceId = obj.get("insuranceId").getAsString();
+
+// insuranceId may be NULL ⇒ check first:
+                String insuranceId = obj.get("insuranceId").isJsonNull()
+                        ? ""
+                        : String.valueOf(obj.get("insuranceId").getAsInt());
+
 
                 rows.add(new BillingRow(id, cost, statusOfPayment, paymentType, insuranceId));
             }
@@ -152,7 +157,7 @@ public class BillingListController {
         String lower = query.toLowerCase();
 
         ObservableList<BillingRow> filtered = masterList.filtered(n ->
-                n.getCost().toLowerCase().contains(lower) ||
+                String.valueOf(n.getCost()).toLowerCase().contains(lower) ||
                         n.getStatusOfPayment().toLowerCase().contains(lower) ||
                         n.getPaymentType().toLowerCase().contains(lower) ||
                         n.getInsuranceId().toLowerCase().contains(lower) ||
@@ -164,7 +169,7 @@ public class BillingListController {
 
     @FXML
     public void handleBack() {
-        SceneNavigator.switchTo("/fxml/manage_staff.fxml");
+        SceneNavigator.switchTo("/fxml/admin_dashboard.fxml");
     }
 
     @FXML
