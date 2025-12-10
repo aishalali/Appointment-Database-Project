@@ -10,25 +10,9 @@
       spacing="14"
       style="-fx-padding: 20;">
 
-    <Label text="Room List"
-           style="-fx-font-size: 24px; -fx-font-weight: bold;" />
-
-    <Label fx:id="messageLabel" textFill="red"/>
-
-    <!-- Table -->
-    <TableView fx:id="roomTable" prefHeight="300">
-        <columns>
-            <TableColumn fx:id="roomNumberColumn"
-                         text="Room Number"
-                         prefWidth="150" />
-            <TableColumn fx:id="floorNumberColumn"
-                         text="Floor Number"
-                         prefWidth="150" />
-        </columns>
-    </TableView>
-
-    <!-- Buttons -->
-    <HBox spacing="10">
+    <!-- Top buttons -->
+    <HBox spacing="10" alignment="CENTER"
+          style="-fx-padding: 0 0 10 0;">
         <Button text="Create Room"
                 onAction="#handleCreateRoom"
                 style="-fx-padding: 8 16; -fx-font-size: 16px;" />
@@ -45,5 +29,28 @@
                 onAction="#handleBack"
                 style="-fx-padding: 8 16; -fx-font-size: 16px;" />
     </HBox>
+
+    <!-- Searchbar -->
+    <TextField fx:id="searchField"
+               promptText="Search rooms..."
+               style="-fx-font-size: 14px; -fx-padding: 6 10;" />
+
+    <!-- Title -->
+    <Label text="Rooms"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <Label fx:id="messageLabel" textFill="red"/>
+
+    <!-- Table -->
+    <TableView fx:id="roomTable" prefHeight="300">
+        <columns>
+            <TableColumn fx:id="roomNumberColumn"
+                         text="Room Number"
+                         prefWidth="150" />
+            <TableColumn fx:id="floorNumberColumn"
+                         text="Floor Number"
+                         prefWidth="150" />
+        </columns>
+    </TableView>
 
 </VBox>

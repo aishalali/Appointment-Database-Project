@@ -21,8 +21,8 @@ public class RoomCreateController {
     private void handleCreateRoom() {
         try {
             JsonObject body = new JsonObject();
-            body.addProperty("roomNumber", roomNumberField.getText());
-            body.addProperty("floorNumber", floorNumberField.getText());
+            body.addProperty("roomNumber", roomNumberField.getText().trim());
+            body.addProperty("floorNumber", Integer.parseInt(floorNumberField.getText().trim()));
 
             URL url = new URL("http://localhost:8080/room/add");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -50,7 +50,7 @@ public class RoomCreateController {
 
     @FXML
     private void handleBack() {
-        SceneNavigator.switchTo("/fxml/admin_dashboard.fxml");
+        SceneNavigator.switchTo("/fxml/room_list.fxml");
     }
 
 }

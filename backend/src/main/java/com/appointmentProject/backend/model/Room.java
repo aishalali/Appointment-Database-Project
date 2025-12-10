@@ -28,11 +28,11 @@ public class Room {
     //variables
     @Id
     @NotNull
-    @Column(name = "roomNumber", unique = true, nullable = false)
+    @Column(name = "room_number", unique = true, nullable = false)
     private String roomNumber;
 
     @NotNull
-    @Column(name = "floorNumber", nullable = false)
+    @Column(name = "floor_number", nullable = false)
     private int floorNumber;
 
     //Test Constructor Only!
@@ -49,8 +49,8 @@ public class Room {
     public int getFloorNumber() {return floorNumber;}
 
     //setter methods
-    public void setRoomNumber(String room_number) {this.roomNumber = roomNumber;}
-    public void setFloorNumber(int floor_number) {this.floorNumber = floorNumber;}
+    public void setRoomNumber(String room_number) {this.roomNumber = room_number;}
+    public void setFloorNumber(int floor_number) {this.floorNumber = floor_number;}
 
     //toString method
     @Override

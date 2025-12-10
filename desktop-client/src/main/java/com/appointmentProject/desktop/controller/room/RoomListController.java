@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -19,8 +20,10 @@ public class RoomListController {
     @FXML private TableColumn<JsonObject, String> roomNumberColumn;
     @FXML private TableColumn<JsonObject, String> floorNumberColumn;
     @FXML private Label messageLabel;
+    @FXML private TextField searchField;
 
     private final ObservableList<JsonObject> roomList = FXCollections.observableArrayList();
+    private FilteredList<JsonObject> filteredRooms;
 
     @FXML
     public void initialize() {
@@ -35,12 +38,30 @@ public class RoomListController {
                         data.getValue().get("floorNumber").getAsString()
                 ));
 
-        roomTable.setItems(roomList);
+        // filtered list wrapper
+        filteredRooms = new FilteredList<>(roomList, p -> true);
+        roomTable.setItems(filteredRooms);
 
+        setupSearch();
         loadRooms();
     }
 
-    // load all rooms from backend
+    private void setupSearch() {
+        searchField.textProperty().addListener((obs, oldVal, newVal) -> {
+            String lower = newVal.toLowerCase();
+
+            filteredRooms.setPredicate(room -> {
+                if (lower.isEmpty()) return true;
+
+                String rn = room.get("roomNumber").getAsString().toLowerCase();
+                String fn = room.get("floorNumber").getAsString().toLowerCase();
+
+                return rn.contains(lower) || fn.contains(lower);
+            });
+        });
+    }
+
+    // load all rooms
     private void loadRooms() {
         try {
             URL url = new URL("http://localhost:8080/room/all");
@@ -62,13 +83,11 @@ public class RoomListController {
         }
     }
 
-    // navigate to create screen
     @FXML
     private void handleCreateRoom() {
         SceneNavigator.switchTo("/fxml/room_create.fxml");
     }
 
-    // navigate to edit screen
     @FXML
     private void handleEditRoom() {
         JsonObject selected = roomTable.getSelectionModel().getSelectedItem();
@@ -78,13 +97,10 @@ public class RoomListController {
             return;
         }
 
-        // set static variable just like BillingEditController
         RoomEditController.selectedRoomNumber = selected.get("roomNumber").getAsString();
-
         SceneNavigator.switchTo("/fxml/room_edit.fxml");
     }
 
-    // delete selected room
     @FXML
     private void handleDeleteRoom() {
         JsonObject selected = roomTable.getSelectionModel().getSelectedItem();
@@ -115,7 +131,6 @@ public class RoomListController {
         }
     }
 
-    // back to admin dashboard
     @FXML
     private void handleBack() {
         SceneNavigator.switchTo("/fxml/admin_dashboard.fxml");
