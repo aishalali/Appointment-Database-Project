@@ -1,7 +1,9 @@
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\provider\ProviderCreateController.java
+C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\billing\BillingListController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\emergencycontact\ManageContactsController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\emergencycontact\ContactEditController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\SceneNavigator.java
+C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\billing\BillingEditController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\nurse\NurseEditController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\dashboard\NurseDashboardController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\account\CreateUserController.java
@@ -35,3 +37,4 @@ C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\app
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\dashboard\AccountManagementController.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\model\UserRow.java
 C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\patient\PatientEditController.java
+C:\Users\matth\Appointment-Database-Project\desktop-client\src\main\java\com\appointmentProject\desktop\controller\billing\BillingCreateController.java
