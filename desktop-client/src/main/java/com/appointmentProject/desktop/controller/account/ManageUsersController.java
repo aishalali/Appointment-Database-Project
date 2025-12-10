@@ -19,6 +19,8 @@ import com.google.gson.JsonObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -153,19 +155,28 @@ public class ManageUsersController {
 
     @FXML
     private void handleCreateUser() {
-        SceneNavigator.switchTo("/fxml/user_create.fxml");
+        SceneNavigator.switchTo("/fxml/create_user.fxml");
     }
 
     @FXML
     private void handleEditUser() {
-        UserRow row = usersTable.getSelectionModel().getSelectedItem();
-        if (row == null) {
-            messageLabel.setText("Please select a user to edit.");
-            return;
-        }
+        try {
+            UserRow selected = usersTable.getSelectionModel().getSelectedItem();
+            if (selected == null) {
+                messageLabel.setText("Please select a user to edit.");
+                return;
+            }
 
-        // Set selection AND navigate
-        EditUserController.selectedUsername = row.getUsername();
-        SceneNavigator.switchTo("/fxml/user_edit.fxml");
+            // Pass selected username to EditUserController
+            EditUserController.selectedUsername = selected.getUsername();
+
+            SceneNavigator.switchTo("/fxml/edit_user.fxml");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            messageLabel.setText("Error loading edit user page.");
+        }
     }
+
+
 }
