@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.appointmentProject.desktop.controller.room.RoomEditController"
+      spacing="12"
+      style="-fx-padding:20;">
+
+    <Label text="Edit Room"
+           style="-fx-font-size:24px; -fx-font-weight:bold;" />
+
+    <Label fx:id="messageLabel" textFill="red"/>
+
+    <TextField fx:id="roomNumberField" promptText="Room Number"/>
+    <TextField fx:id="floorNumberField" promptText="Floor Number"/>
+
+    <HBox spacing="10">
+        <Button text="Save" onAction="#handleSaveRoom"
+                style="-fx-padding: 8 16; -fx-font-size:16px;" />
+
+        <Button text="Back" onAction="#handleBack"
+                style="-fx-padding: 8 16; -fx-font-size:16px;" />
+    </HBox>
+
+</VBox>

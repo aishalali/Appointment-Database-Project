@@ -1,11 +1,3 @@
-/********************************************************************************************************
- * RoomController.java
- *          Handles Room related requests.
- *
- * @author Alexis Patino
- * @since 12/8/2025
- * @version 1.0
- ********************************************************************************************************/
 package com.appointmentProject.backend.controller;
 
 import com.appointmentProject.backend.model.Room;
@@ -23,7 +15,6 @@ public class RoomController {
 
     @Autowired
     private RoomService roomService;
-
 
     // Get all rooms
     @GetMapping("/all")
