@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <Label text="Pharmacy List" style="-fx-font-size: 18px;"/>
+    
+    <TableView fx:id="pharmacyTable" prefHeight="400" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID"/>
+            <TableColumn fx:id="addressColumn" text="Address"/>
+            <TableColumn fx:id="openingTimeColumn" text="Opening Time"/>
+            <TableColumn fx:id="closingTimeColumn" text="Closing Time"/>
+            <TableColumn fx:id="phoneColumn" text="Phone"/>
+            <TableColumn fx:id="emailColumn" text="Email"/>
+            <TableColumn fx:id="actionsColumn" text="Actions"/>
+        </columns>
+    </TableView>
+    
+    <Button text="Add New Pharmacy" fx:id="addButton"/>
+</VBox>
